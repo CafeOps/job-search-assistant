@@ -1,0 +1,39 @@
+SCAN PROBLEMS (fix these, the results below may be incomplete):
+- LinkedIn: could not read 1 full postings (HTTP 429). Those jobs are listed under 'could not check' instead of being rejected.
+
+Job scan 2027-02-07: 3 picks.
+
+Each pick is a preliminary match from keyword and stack filters. Read the full posting before you act.
+
+1. Data Analyst - Northwind Analytics
+Where: Toronto, ON (Hybrid)
+Posted: 2027-02-06  (source: greenhouse)
+Pay: $90,000 to $110,000 a year
+Type: Full-time; level: Mid-Senior level
+Stack: sql, power bi, excel, dashboards
+Link: https://northwind-analytics.example.com/jobs/4471
+
+2. Data Analyst - Bramble Point Staffing
+Where: Toronto, ON (Hybrid)
+Posted: 2027-02-06  (source: linkedin)
+Pay: not posted
+Type: Contract; level: Associate
+Stack: sql, power bi, excel
+Link: https://www.linkedin.com/jobs/view/0000000001/
+Flag: Agency: RATE-FIRST. No resume until the client and rate are settled.
+Flag: No pay posted: get the number first.
+
+3. BI Analyst - Orchardline Distribution
+Where: Toronto, ON
+Posted: 2027-02-06  (source: linkedin)
+Pay: not posted
+Type: Full-time; level: Associate
+Stack: sql, power bi, excel, dashboards
+Link: https://orchardline.example.com/jobs/OD810
+Flag: No pay posted: get the number first.
+
+COULD NOT CHECK (the posting page would not load, was empty, or was skipped by the detail-fetch cap; not rejected, open the link and judge for yourself):
+- Reporting Analyst - Lakeview Freight (Toronto, ON): https://www.linkedin.com/jobs/view/0000000002/  [the full posting could not be loaded]
+
+191 listings checked; rejected: 121 too old, 26 title too senior, 18 off lane, 11 location, 6 stack too thin, 4 under pay floor, 1 excluded employer.
+Batch: 20270207-121502

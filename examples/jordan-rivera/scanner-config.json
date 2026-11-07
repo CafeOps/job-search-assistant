@@ -1,0 +1,58 @@
+{
+  "_comment": "Jordan Rivera's scanner config, approved 2027-01-23. Limits come from SCREEN.md, TARGETS.md and DECISIONS.md. The 15-mile search is a discovery filter, so check the 45-minute transit limit and the 2 office day maximum by hand. pay_ceiling is a search bound, not Jordan's ceiling. No hourly floor is set, so check hourly rates, benefits and the conditional pay band by hand.",
+
+  "keywords": ["data analyst", "reporting analyst", "business intelligence analyst", "SQL", "Power BI"],
+
+  "linkedin": {
+    "enabled": true,
+    "searches": [
+      {"location": "Toronto, Ontario, Canada", "distance": 15},
+      {"location": "Canada", "remote": true}
+    ],
+    "pages": 2,
+    "sleep_seconds": 2
+  },
+
+  "watchlist": [
+    {"company": "Northwind Analytics", "ats": "greenhouse", "slug": "fictional-northwind-analytics"},
+    {"company": "Bayfield Insurance", "ats": "lever", "slug": "fictional-bayfield-insurance"},
+    {"company": "PrairieBeacon Manufacturing", "ats": "ashby", "slug": "fictional-prairiebeacon"},
+    {"company": "CedarVale Energy", "ats": "workday", "host": "cedarvale.example.com", "slug": "cedarvale/careers", "keywords": ["reporting analyst", "data analyst"]}
+  ],
+
+  "max_detail_fetches": 60,
+  "max_age_hours": 48,
+  "max_picks": 3,
+
+  "title_exclude_seniority": ["senior", "sr", "lead", "principal", "staff", "architect", "manager", "director", "head", "vp", "chief", "supervisor", "iii", "iv"],
+  "title_exclude_words": ["intern", "co-op", "student", "sales", "recruiter", "data entry", "software engineer", "data engineer"],
+  "title_exceptions": [],
+  "lane_title_words": ["data analyst", "business intelligence", "bi analyst", "reporting analyst"],
+
+  "stack_terms": ["sql", "sql server", "power bi", "dax", "power query", "excel", "python", "tableau", "dashboards"],
+  "core_terms": ["sql"],
+  "min_stack_hits": 3,
+  "min_stack_hits_offtitle": 5,
+
+  "location_words": ["toronto", "etobicoke", "mississauga"],
+  "allow_remote": true,
+  "remote_country": "Canada",
+
+  "currency": "CAD",
+  "pay_floor": 85000,
+  "pay_ceiling": 120000,
+  "require_pay": false,
+  "pay_prefer_pattern": "CAD|Ontario|Toronto",
+  "pay_avoid_pattern": "USD|US locations",
+
+  "contracts": {"allowed": true, "min_months": 12},
+
+  "exclude_companies": ["Lakeshore Logistics", "Westbrook Health Partners"],
+  "flag_companies": ["Bramble Point Staffing"],
+  "agency_words": ["staffing", "recruitment agency", "recruiting agency", "talent agency", "on behalf of our client", "our client"],
+  
+  "email": {
+    "to": "jordan.rivera.digest@example.com",
+    "subject_prefix": "Jordan | analyst picks"
+  }
+}

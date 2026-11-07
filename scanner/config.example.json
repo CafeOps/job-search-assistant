@@ -1,0 +1,61 @@
+{
+  "_comment": "Copy to scanner-config.json in your data folder. The intake interview fills this in. EVERY value here is a made-up example (a data analyst in Toronto). Replace them all.",
+
+  "keywords": ["data analyst", "SQL", "Power BI", "Tableau", "business intelligence analyst"],
+
+  "linkedin": {
+    "enabled": true,
+    "searches": [
+      {"location": "Toronto, Ontario, Canada", "distance": 40},
+      {"location": "Canada", "remote": true}
+    ],
+    "pages": 3,
+    "sleep_seconds": 1.5
+  },
+
+  "watchlist": [
+    {"company": "Example Co (Greenhouse)", "ats": "greenhouse", "slug": "exampleco"},
+    {"company": "Example Co (Lever)", "ats": "lever", "slug": "exampleco"},
+    {"company": "Example Co (Ashby)", "ats": "ashby", "slug": "exampleco"},
+    {"company": "Example Co (Workday)", "ats": "workday", "host": "exampleco.wd5.myworkdayjobs.com", "slug": "exampleco/exampleco_careers", "keywords": ["data analyst"]}
+  ],
+
+  "max_detail_fetches": 60,
+  "max_age_hours": 48,
+  "max_picks": 10,
+
+  "title_exclude_seniority": ["senior", "sr", "lead", "principal", "staff", "architect", "manager", "director", "head", "vp", "chief", "supervisor", "iii", "iv"],
+  "title_exclude_words": ["intern", "co-op", "student", "sales", "recruiter", "data entry", "software engineer"],
+  "title_exceptions": [],
+  "lane_title_words": ["data analyst", "business intelligence", "bi analyst", "analytics", "reporting analyst"],
+
+  "stack_terms": ["sql", "python", "power bi", "tableau", "excel", "dbt", "snowflake", "looker", "dashboards"],
+  "core_terms": ["sql"],
+  "min_stack_hits": 3,
+  "min_stack_hits_offtitle": 5,
+
+  "location_words": ["toronto", "scarborough", "etobicoke", "mississauga"],
+  "allow_remote": true,
+  "remote_country": "Canada",
+
+  "currency": "CAD",
+  "pay_floor": 70000,
+  "pay_ceiling": 140000,
+  "require_pay": false,
+  "pay_prefer_pattern": "CAD|Ontario|Toronto",
+  "pay_avoid_pattern": "USD|US locations",
+
+  "contracts": {"allowed": true, "min_months": 12, "hourly_floor": 40, "contract_to_perm_only": false},
+
+  "exclude_companies": ["Current Employer Inc"],
+  "flag_companies": [],
+  "agency_words": ["staffing", "recruit", "talent", "robert half", "randstad", "adecco", "teksystems", "hays", "kforce", "apex systems"],
+
+  "email": {
+    "from": "you@example.com",
+    "to": "you@example.com",
+    "smtp_host": "smtp.gmail.com",
+    "smtp_port": 465,
+    "subject_prefix": "Job picks"
+  }
+}
