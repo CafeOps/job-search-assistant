@@ -3,7 +3,7 @@
 ## Daily job email
 - Approved on: 2027-01-24
 - Sends: the daily digest file only (job titles, companies, links, pay). No other files.
-- From / to: jordan.rivera.jobs@example.com to jordan.rivera.digest@example.com
+- From / to: john.smith.jobs@example.com to john.smith.digest@example.com
 - Schedule: daily 07:15
 - Method: SMTP (password in Windows Credential Manager)
 - To stop it: say "pause the daily scan"

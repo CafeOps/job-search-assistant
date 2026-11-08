@@ -106,7 +106,7 @@ copy of it with python-docx (swap the first run's text, blank the rest, clone a 
 
 ## The resume pass
 
-Write `<data>/resume/resume.md` in the format of `examples/jordan-rivera/resume.md`, then:
+Write `<data>/resume/resume.md` in the format of `examples/john-smith/resume.md`, then:
 
 1. **Facts.** List every claim the version needs. Confirm them with the user in ONE numbered message.
 2. **Draft once**, all sections, against Rules 0 to 7. Cut any line you yourself think is risky. Read it as

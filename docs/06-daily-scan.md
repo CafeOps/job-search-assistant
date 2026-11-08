@@ -11,7 +11,7 @@ be confirmed. LinkedIn often blocks cloud addresses too.
 ## 1. Build the config
 
 Copy `scanner/config.example.json` to `<data>/scanner-config.json` and fill it from the intake (compare
-with `examples/jordan-rivera/scanner-config.json`):
+with `examples/john-smith/scanner-config.json`):
 - `keywords`: 5 to 20 search terms. More terms, longer run.
 - `linkedin.searches`: their city with a radius, plus a country-wide remote search if wanted.
 - `title_exclude_seniority`, `title_exclude_words`: from their seniority answer and "refuse" list.

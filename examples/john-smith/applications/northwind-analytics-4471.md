@@ -1,11 +1,11 @@
-# Handoff: submit Jordan Rivera's application to Northwind Analytics, Data Analyst, req 4471
+# Handoff: submit John Smith's application to Northwind Analytics, Data Analyst, req 4471
 
-Authorization (also in AUTHORIZATIONS.md): Jordan asked on 2027-02-07 ("Submit my application to Northwind Analytics for Data Analyst, req 4471, after your own final check. Use the approved resume and these answers. This permission is for this application only.").
+Authorization (also in AUTHORIZATIONS.md): John asked on 2027-02-07 ("Submit my application to Northwind Analytics for Data Analyst, req 4471, after your own final check. Use the approved resume and these answers. This permission is for this application only.").
 - Prepare: yes
 - Submit: yes, after the final check
 - Show summary before submit: no
 Questions go to: the session that prepared this.
-Facts come from the req 4471 posting (2027-02-06) and Jordan's answers (2027-01-13 to 2027-02-07).
+Facts come from the req 4471 posting (2027-02-06) and John's answers (2027-01-13 to 2027-02-07).
 
 ## The job
 - Title, company, req number: Data Analyst, Northwind Analytics, 4471.
@@ -14,15 +14,15 @@ Facts come from the req 4471 posting (2027-02-06) and Jordan's answers (2027-01-
 - Pay posted: $90,000 to $110,000 CAD annual base. | Closes: not stated. Check that the opening is still active before submitting.
 
 ## Files
-- Resume to upload: examples/jordan-rivera/Jordan_Rivera_Resume.pdf (real setup: <data>/resume/live/Jordan_Rivera_Resume.pdf). Never upload from history folders. Check that it opens and matches the approved resume.md.
+- Resume to upload: examples/john-smith/John_Smith_Resume.pdf (real setup: <data>/resume/live/John_Smith_Resume.pdf). Never upload from history folders. Check that it opens and matches the approved resume.md.
 
 ## Sign-in
 The user signs in or creates the account. Never type, invent or store a password. Stop at any
 verification-code screen and ask.
 
 ## Personal details
-- Name / email / phone / address: Jordan Rivera / jordan.rivera.jobs@example.com / +1 416-555-0146 / 1400 Example Avenue, Apt 4, Toronto, ON X0X 0X0, Canada. Enter the address only if the form requires one.
-- LinkedIn / GitHub: https://example.com/in/jordan-rivera / https://example.com/github/jordan-rivera
+- Name / email / phone / address: John Smith / john.smith.jobs@example.com / +1 416-555-0146 / 1400 Example Avenue, Apt 4, Toronto, ON X0X 0X0, Canada. Enter the address only if the form requires one.
+- LinkedIn / GitHub: https://example.com/in/john-smith / https://example.com/github/john-smith
 
 ## Work history (check every autofilled row)
 1. Lakeshore Logistics, Toronto. Mar 2023 to present. Form title: Data Analyst. Description: the approved current-role resume bullets.
@@ -41,7 +41,7 @@ Remove extra rows autofill invents.
 - How did you hear: Employer careers site, found through the watchlist. Do not select LinkedIn.
 - Salary: expectation $100,000 CAD annual base, range $95,000 to $110,000, minimum $85,000. If the form has only a desired-salary box, enter $100,000. Do not substitute the minimum.
 - Hybrid / travel / overtime: Accepts the posted hybrid schedule (2 office days a week) and travel up to 10%. No on-call, overnight shifts or recurring weekend work. Occasional planned weekday overtime is fine.
-- Start date: Two weeks after accepting a written offer and clearing required checks. If the form needs a fixed date, ask Jordan. Do not invent one.
+- Start date: Two weeks after accepting a written offer and clearing required checks. If the form needs a fixed date, ask John. Do not invent one.
 - Previous employment at this company / relatives there / auditor ties: No / no / no.
 - Non-compete / other-employer commitments: No known non-compete. Currently employed at Lakeshore Logistics, with continuing confidentiality obligations. Will leave before starting the replacement job. Do not authorize current-employer contact.
 - Requirements they don't meet: Answer truthfully, don't volunteer. Python is basic, with no production pipeline ownership. Do not round tenure up on a form asking for completed years.
@@ -50,7 +50,7 @@ Remove extra rows autofill invents.
 "Prefer not to answer" unless the user says otherwise.
 
 ## Submit
-- Before submitting: Jordan already said to submit after your own check. Confirm company, req, location, live PDF, salary answer, work history and consent boxes. Decline optional talent communities and alerts. Stop for a missing file, a changed material requirement, an unsupported answer or a verification code.
+- Before submitting: John already said to submit after your own check. Confirm company, req, location, live PDF, salary answer, work history and consent boxes. Decline optional talent communities and alerts. Stop for a missing file, a changed material requirement, an unsupported answer or a verification code.
 - After: Screenshot the confirmation, look for the confirmation email, and update the existing req 4471 row in PIPELINE.md with the actual submission time and confirmation reference. Do not add a duplicate row.
 
 ## Don't

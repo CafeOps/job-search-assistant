@@ -1,5 +1,5 @@
-# Jordan Rivera
-Toronto, ON | 416-555-0146 | jordan.rivera.jobs@example.com | linkedin.com/in/jordan-rivera-example
+# John Smith
+Toronto, ON | 416-555-0146 | john.smith.jobs@example.com | linkedin.com/in/john-smith-example
 Headline: Data Analyst | SQL, Power BI and Reporting Automation
 
 ## Summary

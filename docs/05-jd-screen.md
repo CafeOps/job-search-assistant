@@ -1,6 +1,6 @@
 # 05. Screening a job posting
 
-For a pasted posting (or a link you can open), answer in exactly this shape. No essays. Sample: `examples/jordan-rivera/sample-screen.md`.
+For a pasted posting (or a link you can open), answer in exactly this shape. No essays. Sample: `examples/john-smith/sample-screen.md`.
 
 **Verdict: APPLY / SKIP / APPLY-IF (condition) / RATE-FIRST (agency)**
 

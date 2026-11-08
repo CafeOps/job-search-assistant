@@ -1,5 +1,5 @@
 {
-  "_comment": "Jordan Rivera's scanner config, approved 2027-01-23. Limits come from SCREEN.md, TARGETS.md and DECISIONS.md. The 15-mile search is a discovery filter, so check the 45-minute transit limit and the 2 office day maximum by hand. pay_ceiling is a search bound, not Jordan's ceiling. No hourly floor is set, so check hourly rates, benefits and the conditional pay band by hand.",
+  "_comment": "John Smith's scanner config, approved 2027-01-23. Limits come from SCREEN.md, TARGETS.md and DECISIONS.md. The 15-mile search is a discovery filter, so check the 45-minute transit limit and the 2 office day maximum by hand. pay_ceiling is a search bound, not John's ceiling. No hourly floor is set, so check hourly rates, benefits and the conditional pay band by hand.",
 
   "keywords": ["data analyst", "reporting analyst", "business intelligence analyst", "SQL", "Power BI"],
 
@@ -52,7 +52,7 @@
   "agency_words": ["staffing", "recruitment agency", "recruiting agency", "talent agency", "on behalf of our client", "our client"],
   
   "email": {
-    "to": "jordan.rivera.digest@example.com",
-    "subject_prefix": "Jordan | analyst picks"
+    "to": "john.smith.digest@example.com",
+    "subject_prefix": "John | analyst picks"
   }
 }

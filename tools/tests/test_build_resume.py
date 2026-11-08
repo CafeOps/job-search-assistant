@@ -8,13 +8,13 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "tools"))
 import build_resume  # noqa: E402
 
-SAMPLE = ROOT / "examples" / "jordan-rivera" / "resume.md"
+SAMPLE = ROOT / "examples" / "john-smith" / "resume.md"
 
 
 class BuildResume(unittest.TestCase):
     def test_parse_sample(self):
         d = build_resume.parse(SAMPLE.read_text(encoding="utf-8"))
-        self.assertEqual(d["name"], "Jordan Rivera")
+        self.assertEqual(d["name"], "John Smith")
         self.assertIn("@", d["contact"])
         titles = [s["title"] for s in d["sections"]]
         self.assertEqual(titles[:3], ["Summary", "Skills", "Experience"])
@@ -34,7 +34,7 @@ class BuildResume(unittest.TestCase):
             moved = build_resume.archive_live(live)
             self.assertTrue((moved / "Old_Resume.docx").exists())
             self.assertTrue((live.parent / "history" / "README.md").exists())
-            out = live / "Jordan_Rivera_Resume.docx"
+            out = live / "John_Smith_Resume.docx"
             build_resume.build_docx(build_resume.parse(SAMPLE.read_text(encoding="utf-8")), out)
             self.assertTrue(out.exists() and out.stat().st_size > 5000)
 

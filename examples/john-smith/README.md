@@ -1,4 +1,4 @@
-# Example: Jordan Rivera
+# Example: John Smith
 
 A finished profile for an invented person. Everything here is made up except the university and certification names, and proof files are described, not included.
 
@@ -18,7 +18,7 @@ Show it at the start as "where we're headed". After each intake phase, compare t
 | AUTHORIZATIONS.md | The standing email permission and each application's approvals |
 | RESUME-RULES.md | Width band, bullet counts, title layers, file paths |
 | resume.md | The resume source text. Every line traces to STORIES and NUMBERS |
-| Jordan_Rivera_Resume.docx / .pdf | Built from resume.md by tools/build_resume.py. Quality gate passed |
+| John_Smith_Resume.docx / .pdf | Built from resume.md by tools/build_resume.py. Quality gate passed |
 | preview/page-1.png | The page image the AI looked at in the visual check |
 | scanner-config.json | Keywords, places, floors, excludes tuned to the person |
 | sample-digest.txt | One morning's email |

@@ -1,6 +1,6 @@
 # Voice
 
-Set by Jordan on 2027-01-16.
+Set by John on 2027-01-16.
 
 ## Banned words and phrases (THE one list, paste into every drafting brief)
 The kit's default list applies unchanged (templates/profile/VOICE.md).

@@ -1,9 +1,9 @@
 # Targets
 
-Set by Jordan on 2027-01-13. Commute, remote and relocation: 2027-01-15.
+Set by John on 2027-01-13. Commute, remote and relocation: 2027-01-15.
 
 - Titles wanted: Data Analyst, Data Analyst II, Business Intelligence Analyst, BI Analyst, and Reporting Analyst when the role owns SQL analysis and reporting.
-- Titles refused (and why): Senior, Lead, Principal, Staff, Architect, Manager and Director. Jordan wants broader experience before higher accountability or people management. Also Data Entry Analyst and report-queue roles without analytical ownership.
+- Titles refused (and why): Senior, Lead, Principal, Staff, Architect, Manager and Director. John wants broader experience before higher accountability or people management. Also Data Entry Analyst and report-queue roles without analytical ownership.
 - Industries / company types wanted: Established logistics, distribution, manufacturing, insurance, utilities and retail businesses with an internal analytics team and a permanent opening.
 - Industries / companies avoided: Gambling, political campaigns, commission-based sales analytics and employers selling identifiable patient data. Agencies must name the client and rate before a resume is shared.
 - Company size: Bigger. At least 1,000 employees, with an analytics manager and colleagues who review SQL and dashboard changes.

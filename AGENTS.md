@@ -90,7 +90,7 @@ then ask whether the resume needs a pass.
 docs/                    step guides
 scanner/                 the daily scan, the email sender, the scheduler installers
 templates/               files you copy into <data>/, and a plain resume layout
-examples/jordan-rivera/  a complete fake profile (see its README.md). Never copy its facts.
+examples/john-smith/  a complete fake profile (see its README.md). Never copy its facts.
 ```
 
 Tools (`tools/`):

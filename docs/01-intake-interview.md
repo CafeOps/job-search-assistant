@@ -80,6 +80,6 @@ Write each story into `<data>/STORIES.md` in that doc's format.
 ## Done when
 
 - `<data>/PROFILE.md`, `TARGETS.md`, `SCREEN.md`, `STORIES.md`, `VOICE.md`, `NUMBERS.md` and `scanner-config.json` are filled from the user's own answers, and they confirmed each summary.
-- You compared each with its match in `examples/jordan-rivera/`. Where theirs is thinner, ask one more round or record the gap. "Done" means as complete as the facts allow, not as long as the example.
+- You compared each with its match in `examples/john-smith/`. Where theirs is thinner, ask one more round or record the gap. "Done" means as complete as the facts allow, not as long as the example.
 - `<data>/PROGRESS.md` says `intake: confirmed YYYY-MM-DD`.
 - Next: the resume pass in `docs/03-resume-rules.md`.

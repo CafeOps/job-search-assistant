@@ -1,6 +1,6 @@
 # Story bank
 
-Format and prompts: docs/04-story-bank.md. Told by Jordan 2027-01-17. Figures and resume use settled 2027-01-20.
+Format and prompts: docs/04-story-bank.md. Told by John 2027-01-17. Figures and resume use settled 2027-01-20.
 
 ## Depot reporting
 - When / where: Lakeshore Logistics, Feb 2024.
@@ -47,7 +47,7 @@ Format and prompts: docs/04-story-bank.md. Told by Jordan 2027-01-17. Figures an
 - Situation: Weekly finance reports needed manual workbook assembly and separate distribution steps.
 - Their part: "I built the Power Query refresh steps, standardized the output tabs and configured distribution through the reporting portal."
 - Result: Saved 4 analyst hours per week (N06, estimated).
-- Proof: Reporting checklist, Jordan's account.
+- Proof: Reporting checklist, John's account.
 - Who else was involved: Finance recipients (checked the outputs), portal administrator (approved the distribution schedule).
 - Lanes: Excel / reporting automation / report delivery
 - Use on resume: yes, with "estimated" kept. Approved wording: "Automated weekly report assembly and distribution in Excel, saving an estimated 4 hours per week."
@@ -98,6 +98,6 @@ Format and prompts: docs/04-story-bank.md. Told by Jordan 2027-01-17. Figures an
 - Their part: "I wrote the exception query, removed obvious false matches and prepared an annualized exposure estimate. I handed the cases to finance."
 - Result: Identified $84,000 CAD in possible annual duplicate charges (N07, identified, not realized). No refund, recovery or booked saving is confirmed.
 - Proof: Exception workbook, finance-review note.
-- Who else was involved: Accounts payable (owns validation and vendor follow-up). Jordan did not negotiate refunds or make accounting entries.
+- Who else was involved: Accounts payable (owns validation and vendor follow-up). John did not negotiate refunds or make accounting entries.
 - Lanes: exception analysis / financial controls / judgment
 - Use on resume: interview only. The finding is unresolved and sensitive. Discuss the method without naming vendors or sharing records. Never describe the amount as money saved.

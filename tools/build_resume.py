@@ -17,7 +17,7 @@ What it does:
   6. The AI then OPENS AND LOOKS AT the page images and works through the visual checklist in docs/03.
      A script can't judge how a page looks.
 Needs python-docx. Better with pypdf (text check) and pypdfium2 + pillow (page images). pdftoppm also works.
-The resume.md format is shown in examples/jordan-rivera/resume.md.
+The resume.md format is shown in examples/john-smith/resume.md.
 """
 import datetime as dt
 import re
