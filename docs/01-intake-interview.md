@@ -83,3 +83,7 @@ Write each story into `<data>/STORIES.md` in that doc's format.
 - You compared each with its match in `examples/john-smith/`. Where theirs is thinner, ask one more round or record the gap. "Done" means as complete as the facts allow, not as long as the example.
 - `<data>/PROGRESS.md` says `intake: confirmed YYYY-MM-DD`.
 - Next: the resume pass in `docs/03-resume-rules.md`.
+
+Quick start (AGENTS.md): done when PROFILE.md (identity), TARGETS.md, SCREEN.md and `scanner-config.json`
+are filled and confirmed. Record `intake: quick start (phases 1, 3, 4) YYYY-MM-DD` and go straight to the
+daily scan (`docs/06-daily-scan.md`). STORIES, VOICE, NUMBERS and the resume pass wait until the user asks.

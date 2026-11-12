@@ -145,8 +145,9 @@ For a user on the quick start (AGENTS.md) who applies with the resume they uploa
 rules and no quality gate. Rule 0 still holds: the file shows where a claim came from, not that it is true.
 
 1. **List** every fact a reader could check: each employer, title and dates, each degree and certification
-   with its status, and every number. For each job, also ask for the HR-record title if the resume shows a
-   different one (Rule 3).
+   with its status, and every number. For EVERY job, also ask: "What is your title in HR's records, the one
+   a reference check would confirm?" Ask even when the resume's title looks official: the resume may show a
+   functional title (Rule 3). Save that answer as the HR-record title. Forms use it.
 2. **Confirm** them in ONE numbered message. The user answers "right", "wrong" or "change to ...".
 3. **Save** each confirmed fact in PROFILE.md (history, education, certifications) or NUMBERS.md (status
    "confirmed"). Forms are filled from these files, never from the resume's wording.

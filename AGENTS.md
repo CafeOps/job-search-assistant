@@ -43,18 +43,22 @@ Never re-ask what `<data>/` already answers. Confirm it.
 
 **Quick start (job emails first).** In stage 0, ask: "Do you have a current resume, and would you like the
 daily job email running before any resume work?" If yes:
-1. Stages 0 and 1 as usual.
+1. Stages 0 and 1, but in stage 1 fix only what the scan and email need. Leave resume-building tools
+   (python-docx, Word or LibreOffice for page images) for later, even if the report lists them.
 2. Ask for the resume file and copy it unchanged into `<data>/source/`. Never edit the original. Record
    `harvest: skipped (quick start)` and `resume: imported, claims unconfirmed: <path>`.
-3. Intake phases 1, 3 and 4 only (`docs/01-intake-interview.md`). Read the resume first and confirm what it
-   answers instead of asking again. Also confirm the words the scan matches on (`keywords`, `stack_terms`,
+3. Intake phases 1, 3 and 4 only (`docs/01-intake-interview.md`). Read the resume first and show what it
+   already answers (name, city, contact details, current job, years of experience, tools) for a yes,
+   instead of asking again. Also confirm the words the scan matches on (`keywords`, `stack_terms`,
    `core_terms`): only tools and skills they actually use. Record `intake: quick start (phases 1, 3, 4) YYYY-MM-DD`.
 4. Stage 6, the daily scan and email. Record `rules: deferred`.
 
-Stages 2 to 5 stay deferred until the user asks for them, and a deferred stage doesn't block later stages.
-The one gate: before the first application, the resume must be `approved` (stage 5) or `existing, claims
-confirmed` (the claim check in `docs/03-resume-rules.md`, a few minutes). Run the claim check when they pick
-their first job, not before.
+Routing on the quick start: `harvest: skipped (quick start)`, `intake: quick start ...`, `rules: deferred`
+and any `resume: imported ...` or `resume: existing ...` line all count as deferred, so stages 2 to 5 are
+skipped in every later session until the user asks for them. After `email: verified` nothing is pending:
+help with whatever the user asks. Stage 7 (browser setup) starts only when they pick a job to apply to.
+The one gate: before that first application, the resume must be `approved` (stage 5) or `existing, claims
+confirmed` (the claim check in `docs/03-resume-rules.md`, a few minutes).
 
 **Finding a working Python.** Try `py -3 --version` (Windows), `python3 --version`, `python --version`. A
 command counts only if it prints version 3.9 or newer. On Windows, `python` can be a Microsoft Store
