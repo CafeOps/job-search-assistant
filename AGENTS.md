@@ -26,7 +26,8 @@ from this chat window." Continue only if the user says they can't switch (see "I
 user's job-hunt folder from stage 0, separate from the kit and never in Git or a shared zip.
 
 Every session, run `<python> tools/setup_check.py` (it prints the data folder) and read `<data>/PROGRESS.md`.
-No data folder or no PROGRESS.md: new user, start at stage 0. Otherwise continue at the first stage not done.
+No data folder or no PROGRESS.md: new user, start at stage 0. Otherwise continue at the first stage that is
+neither done nor deferred (see "Quick start" below the table).
 Never re-ask what `<data>/` already answers. Confirm it.
 
 | Stage | What to do | Done when (status line in PROGRESS.md) |
@@ -39,6 +40,21 @@ Never re-ask what `<data>/` already answers. Confirm it.
 | 5. Resume | `docs/03-resume-rules.md` (the resume pass) | `resume: approved YYYY-MM-DD (gate: automatic PASS, visual PASS, user approved): <paths>`, written only after the quality gate: `<python> tools/build_resume.py` shows no FAIL, you have OPENED AND LOOKED AT every page image in `<data>/resume/preview/` and passed the visual checklist in `docs/03-resume-rules.md`, and the user approved the page |
 | 6. Daily scan | `docs/06-daily-scan.md` | `scan: tested`, then `email: verified (date)` |
 | 7. Applying | `docs/07-apply-on-behalf.md` | `browser: ready` or `browser: manual packets` |
+
+**Quick start (job emails first).** In stage 0, ask: "Do you have a current resume, and would you like the
+daily job email running before any resume work?" If yes:
+1. Stages 0 and 1 as usual.
+2. Ask for the resume file and copy it unchanged into `<data>/source/`. Never edit the original. Record
+   `harvest: skipped (quick start)` and `resume: imported, claims unconfirmed: <path>`.
+3. Intake phases 1, 3 and 4 only (`docs/01-intake-interview.md`). Read the resume first and confirm what it
+   answers instead of asking again. Also confirm the words the scan matches on (`keywords`, `stack_terms`,
+   `core_terms`): only tools and skills they actually use. Record `intake: quick start (phases 1, 3, 4) YYYY-MM-DD`.
+4. Stage 6, the daily scan and email. Record `rules: deferred`.
+
+Stages 2 to 5 stay deferred until the user asks for them, and a deferred stage doesn't block later stages.
+The one gate: before the first application, the resume must be `approved` (stage 5) or `existing, claims
+confirmed` (the claim check in `docs/03-resume-rules.md`, a few minutes). Run the claim check when they pick
+their first job, not before.
 
 **Finding a working Python.** Try `py -3 --version` (Windows), `python3 --version`, `python --version`. A
 command counts only if it prints version 3.9 or newer. On Windows, `python` can be a Microsoft Store

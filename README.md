@@ -44,6 +44,8 @@ You don't need to code. The AI does the technical parts and asks before installi
 
 - A Windows 10/11 PC or a Mac, and a paid ChatGPT or Claude plan. No API key.
 - About an hour for setup, in one or two sittings. Stop any time and say "continue" later.
+- Already have a resume? Say so at the start. The quick start gets your daily job email running first and
+  leaves the resume work for later.
 - For the daily email: the Gmail connector in your ChatGPT or Claude account, or an email account that can make
   an "app password" (Gmail, Outlook, Yahoo, iCloud and most others can). You type it into a password box
   on your screen, never into the chat.

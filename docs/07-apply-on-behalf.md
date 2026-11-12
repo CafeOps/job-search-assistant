@@ -12,12 +12,16 @@ go-ahead, ask again.
 
 ## Before opening the form
 
-1. Screen it (`docs/05-jd-screen.md`). Don't apply to a SKIP unless the user overrides it.
-2. Write the handoff: copy `templates/apply-handoff.md` to `<data>/applications/<company>-<req>.md` and fill
+1. Check the resume line in PROGRESS.md. It must say `approved` or `existing, claims confirmed` with a hash
+   that still matches the file. `imported, claims unconfirmed` means run the claim check in
+   `docs/03-resume-rules.md` first. Work history, education and certifications on the form come from
+   PROFILE.md, never from the resume's wording.
+2. Screen it (`docs/05-jd-screen.md`). Don't apply to a SKIP unless the user overrides it.
+3. Write the handoff: copy `templates/apply-handoff.md` to `<data>/applications/<company>-<req>.md` and fill
    in what `<data>/` holds. Then ask for the rest in ONE message: street address (if not stored), start
    date for this job, relatives or past employment at the company, non-compete, location (if several),
    and salary answers (if `SCREEN.md` lacks them). Never guess these.
-3. Confirm the job, location, exact resume file, and whether they want a summary before you submit.
+4. Confirm the job, location, exact resume file, and whether they want a summary before you submit.
 
 ## Browser readiness (first time only)
 

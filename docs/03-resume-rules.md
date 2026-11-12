@@ -139,6 +139,28 @@ for the exported PDF, then render or screenshot it and do step 4 on that.
 7. No heading stranded at the bottom of a page.
 8. The top third says who they are and what they do, at a glance.
 
+## Using an existing resume (quick start)
+
+For a user on the quick start (AGENTS.md) who applies with the resume they uploaded. No rebuild, no style
+rules and no quality gate. Rule 0 still holds: the file shows where a claim came from, not that it is true.
+
+1. **List** every fact a reader could check: each employer, title and dates, each degree and certification
+   with its status, and every number. For each job, also ask for the HR-record title if the resume shows a
+   different one (Rule 3).
+2. **Confirm** them in ONE numbered message. The user answers "right", "wrong" or "change to ...".
+3. **Save** each confirmed fact in PROFILE.md (history, education, certifications) or NUMBERS.md (status
+   "confirmed"). Forms are filled from these files, never from the resume's wording.
+4. **Fix** anything wrong in a copy (the python-docx method in "Files and names"), keep the original in
+   `<data>/source/`, and put the fixed copy in `<data>/resume/live/`. A version with a wrong or unconfirmed
+   claim is never uploaded. If the user won't change it, offer the full resume pass instead.
+5. **Record** `resume: existing, claims confirmed YYYY-MM-DD: <path> sha256 <first 12 characters>` in
+   PROGRESS.md. Get the hash with
+   `<python> -c "import hashlib,sys; print(hashlib.sha256(open(sys.argv[1],'rb').read()).hexdigest())" <file>`.
+   A file whose hash no longer matches needs a new check. Never write the `approved (gate: ...)` line for a
+   resume that didn't go through the gate.
+
+The full resume pass stays available at any time.
+
 ## Staleness check
 
 At the start of a resume session, read the "Last resume update" date in RESUME-RULES.md. If a new cert,

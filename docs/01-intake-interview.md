@@ -8,7 +8,7 @@ Goal: learn enough to write the profile, resume rules, screening rules and scann
 - Accept rough answers. Follow up only when an answer changes a filter.
 - Read any files they give you first. Ask only what those don't answer.
 - End each phase with a short written summary the user confirms, quoting their words (their phrasing seeds the resume voice). Save the answers in `<data>/` and update `<data>/PROGRESS.md` (phase reached, open questions) before moving on.
-- Short on time: phases 1, 3 and 4 are enough to draft the scanner config. Mark the rest open in PROGRESS.md and finish them before the resume pass.
+- Short on time, or on the quick start (AGENTS.md): phases 1, 3 and 4 are enough to draft the scanner config. Mark the rest open in PROGRESS.md and finish them before the resume pass.
 
 ## Phase 1. Who they are
 
