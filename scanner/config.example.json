@@ -48,6 +48,7 @@
   "contracts": {"allowed": true, "min_months": 12, "hourly_floor": 40, "contract_to_perm_only": false},
 
   "exclude_companies": ["Current Employer Inc"],
+  "include_companies": [],
   "flag_companies": [],
   "agency_words": ["staffing", "recruit", "talent", "robert half", "randstad", "adecco", "teksystems", "hays", "kforce", "apex systems"],
 

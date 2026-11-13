@@ -22,6 +22,11 @@ with `examples/john-smith/scanner-config.json`):
 - `contracts`: allowed, minimum months, hourly floor, contract-to-perm only.
 - `exclude_companies` (current employer, applications in progress), `flag_companies` (an agency already
   submitted them), `agency_words`.
+- `include_companies` (optional): only for a lane tied to a kind of employer (schools, universities,
+  hospitals, government). Words a LinkedIn employer name must contain, for example
+  `["university", "college", "school board"]`. Watchlist employers always pass. Put the same kind of employer
+  in the `keywords` too ("university program coordinator", not "program coordinator"), or most of what
+  LinkedIn returns gets thrown away. Leave it empty for a lane any employer can hire for.
 - `watchlist`: employers they'd love to work at (below).
 - `max_detail_fetches` (default 60): full postings opened per run. The rest are listed, not rejected.
 
@@ -36,6 +41,11 @@ Read the digest with the user (`<data>/scan/out/<date>.txt`) and tune. The `.jso
 rejected posting and why, the fastest way to spot a filter that is too tight. Act on any "SCAN PROBLEMS"
 or "COULD NOT CHECK" section before trusting "no matches". Screen each pick (`docs/05-jd-screen.md`). Set
 `scan: tested` in PROGRESS.md when the user is happy with the results.
+
+A 0-pick digest is a normal result, not a reason to write the email yourself (AGENTS.md rule 11). Read the
+reject counts. If one reason threw out at least 80% of the listings, the digest says so at the top: the
+searches are finding the wrong jobs. Fix `keywords` and `linkedin.searches` with the user. Don't loosen a
+filter to let the wrong jobs through, and don't patch the scanner (rule 12).
 
 ## 3. Email
 
@@ -72,7 +82,7 @@ Setup is done only when an email from the scheduled run arrives and the user con
 | "Is my job email working?" | `<python> scanner/jobscan.py --status` (last scan, last delivery, queued, next run, problems) |
 | "Run it now" | Windows: `powershell -ExecutionPolicy Bypass -File scanner\run.ps1` / Mac: `bash scanner/run.sh` |
 | "Pause the daily scan" | Windows: `powershell -ExecutionPolicy Bypass -File scanner\install-task.ps1 -Uninstall` / Mac: `bash scanner/install-launchagent.sh --uninstall` (reinstall to resume) |
-| "Change what it looks for" | edit `<data>/scanner-config.json`, then `--dry` to check |
+| "Change what it looks for" | propose the change (old and new value), edit `<data>/scanner-config.json` after their yes, then `--dry` to check |
 | "Stop and remove everything" | uninstall the schedule, then `<python> tools/email_setup.py --remove` |
 
 ## The employer watchlist (most reliable source)
@@ -86,3 +96,7 @@ real dates, not blocked.
 | Lever | `jobs.lever.co/<slug>` | `{"ats": "lever", "slug": "<slug>"}` |
 | Ashby | `jobs.ashbyhq.com/<slug>` | `{"ats": "ashby", "slug": "<slug>"}` |
 | Workday | `<company>.wd5.myworkdayjobs.com/en-US/<site>/...` | `{"ats": "workday", "host": "<host>", "slug": "<tenant>/<site>"}` (tenant is usually the first word of the host) |
+
+Any other careers site (many schools, universities, hospitals and governments run their own) can't go on the
+watchlist. Tell the user which of their employers that leaves out: for those, LinkedIn is the only automatic
+source. Checking those sites by hand is a chat task the user asks for. It never goes into the daily email.

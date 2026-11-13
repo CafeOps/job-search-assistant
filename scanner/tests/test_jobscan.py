@@ -314,6 +314,37 @@ class OutboxTests(Base):
         self.assertIn("2 dropped from queue", body)
         self.assertEqual(jobscan.load(jobscan.OUTBOX, {})["jobs"], [])
 
+    def test_include_companies_limits_linkedin_only(self):
+        jobscan.init(cfg(include_companies=["university", "school board"]), Path(self.tmp.name))
+        seen, queued, today = {"ids": set(), "keys": {}}, {"ids": set(), "keys": set()}, dt.date.today()
+        off = mk(src="linkedin", jid="1", company="Acme Corp")
+        on = mk(src="linkedin", jid="2", company="Lakeside University")
+        board = mk(src="linkedin", jid="3", company="Northfield District School Board")
+        watch = mk(src="greenhouse", jid="4", company="Acme Corp")
+        self.assertEqual(jobscan.early_reject(off, seen, queued, today), "employer not on include list")
+        self.assertIsNone(jobscan.early_reject(on, seen, queued, today))
+        self.assertIsNone(jobscan.early_reject(board, seen, queued, today))
+        self.assertIsNone(jobscan.early_reject(watch, seen, queued, today))   # watchlist employers pass
+        self.assertEqual(jobscan.requeue_reject(off), "employer not on include list")
+
+    def test_zero_picks_with_one_dominant_reason_warns(self):
+        jobscan.init(cfg(include_companies=["university"]), Path(self.tmp.name))
+        jobs = {}
+        for i in range(25):
+            j = mk(src="linkedin", jid=str(i), title=f"Data Analyst {i}", company=f"Shop {i}")
+            jobs[j["id"]] = j
+        jobscan.linkedin, jobscan.watchlist = (lambda: jobs), (lambda: {})
+        body, _, _ = jobscan.scan(True, self.now)
+        self.assertIn("SCAN PROBLEMS", body)
+        self.assertIn("25 of 25 listings were rejected for one reason ('employer not on include list')", body)
+
+    def test_no_dominance_warning_when_there_are_picks_or_few_listings(self):
+        self.assertIsNone(jobscan.one_reason_dominates({"off lane": 30}, 30, 1))
+        self.assertIsNone(jobscan.one_reason_dominates({"off lane": 10}, 10, 0))
+        self.assertIsNone(jobscan.one_reason_dominates({"already sent": 30}, 30, 0))
+        self.assertIsNone(jobscan.one_reason_dominates({"off lane": 15, "location": 15}, 30, 0))
+        self.assertIsNotNone(jobscan.one_reason_dominates({"off lane": 24, "location": 6}, 30, 0))
+
     def test_queued_job_under_new_pay_floor_dropped(self):
         j = self.fresh(3)
         j["desc"] = "SQL Python Tableau. $105,000 - $110,000 a year"

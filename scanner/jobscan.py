@@ -94,7 +94,7 @@ def set_state(path):
 
 def init(cfg, state_dir=None):
     """Load a config dict into the module globals. Tests call this with their own dict."""
-    global CFG, SENIOR, OFFLANE, TITLE_KEEP, LANE, PLACES, EXCLUDE_CO, FLAG_CO, AGENCY
+    global CFG, SENIOR, OFFLANE, TITLE_KEEP, LANE, PLACES, EXCLUDE_CO, INCLUDE_CO, FLAG_CO, AGENCY
     global STACK, CORE, PAY_PREFER, PAY_AVOID, MAX_AGE_H, CURRENCY
     CFG = cfg
     SENIOR = words(cfg.get("title_exclude_seniority"))
@@ -103,6 +103,7 @@ def init(cfg, state_dir=None):
     LANE = words(cfg.get("lane_title_words"))
     PLACES = words(cfg.get("location_words"))
     EXCLUDE_CO = words(cfg.get("exclude_companies"))
+    INCLUDE_CO = words(cfg.get("include_companies"))
     FLAG_CO = words(cfg.get("flag_companies"))
     AGENCY = words(cfg.get("agency_words"))
     STACK = [s.lower() for s in cfg.get("stack_terms", [])]
@@ -789,10 +790,18 @@ def is_sent(j, seen, today):
     return d >= (today - dt.timedelta(days=KEY_DAYS)).isoformat()
 
 
+def not_included(j):
+    """include_companies limits LinkedIn results to employers whose name has one of the words (a lane tied to a
+    kind of employer: schools, hospitals, government). Watchlist employers were picked by the user and pass."""
+    return bool(INCLUDE_CO) and j["source"] == "linkedin" and not INCLUDE_CO.search(j["company"])
+
+
 def early_reject(j, seen, queued, today):
     """Rejects that need neither dates, location nor detail. Run before cross-source merging."""
     if EXCLUDE_CO and EXCLUDE_CO.search(j["company"]):
         return "excluded employer"
+    if not_included(j):
+        return "employer not on include list"
     if is_sent(j, seen, today):
         return "already sent"
     if j["id"] in queued["ids"] or dedupe_key(j) in queued["keys"]:
@@ -809,6 +818,8 @@ def requeue_reject(j):
     """Re-check a job waiting in the outbox against today's config. -> reason or None."""
     if EXCLUDE_CO and EXCLUDE_CO.search(j["company"]):
         return "excluded employer"
+    if not_included(j):
+        return "employer not on include list"
     keep = TITLE_KEEP and TITLE_KEEP.search(j["title"])
     if SENIOR and SENIOR.search(j["title"]) and not keep:
         return "title too senior"
@@ -1104,6 +1115,22 @@ def status():
 
 # ---------- main ----------
 
+ROUTINE_REJECTS = {"already sent", "already queued", "duplicate across sources", "too old", "dropped from queue"}
+
+
+def one_reason_dominates(counts, total, picks):
+    """A zero-pick day where one filter threw out at least 80% of the listings means the searches are finding
+    the wrong jobs. Say so, or the digest looks healthy every day. -> warning text or None."""
+    if picks or total < 20:
+        return None
+    why, n = max(((k, v) for k, v in counts.items() if k not in ROUTINE_REJECTS),
+                 key=lambda x: x[1], default=(None, 0))
+    if not why or n < 0.8 * total:
+        return None
+    return (f"{n} of {total} listings were rejected for one reason ('{why}'). The searches are probably finding "
+            "the wrong jobs: change keywords or linkedin.searches (docs/06-daily-scan.md), not the filters.")
+
+
 def scan(dry=False, now=None):
     """Run one scan. Returns (digest text, batch id, digest path)."""
     now = now or dt.datetime.now(UTC)
@@ -1173,6 +1200,9 @@ def scan(dry=False, now=None):
     for (src, code), n in DETAIL_FAILS.items():
         HEALTH.append(f"{src}: could not read {n} full postings (HTTP {code}). Those jobs are listed under "
                       "'could not check' instead of being rejected.")
+    lopsided = one_reason_dominates(counts, len(jobs), len(picks) + len(carried))
+    if lopsided:
+        HEALTH.append(lopsided)
 
     queue = carried + picks                 # earlier unsent jobs go first
     batch = queue[:int(CFG.get("max_picks", 10))]
