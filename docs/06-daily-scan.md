@@ -20,8 +20,11 @@ with `examples/john-smith/scanner-config.json`):
 - `currency`, `pay_floor`, `pay_ceiling`, `pay_prefer_pattern`: their money answers. A range that reaches
   the floor only at the top stays in, labelled "Pay range crosses your floor".
 - `contracts`: allowed, minimum months, hourly floor, contract-to-perm only.
-- `exclude_companies` (current employer, applications in progress), `flag_companies` (an agency already
+- `exclude_companies` (current employer, employers they never want), `flag_companies` (an agency already
   submitted them), `agency_words`.
+- `exclude_postings`: jobs already applied to, one "Employer | Job title" line each. Only that job is
+  hidden, so one application never blocks a big employer's other jobs. The title must match (punctuation
+  and case don't matter). Add one after every submitted application (`docs/07-apply-on-behalf.md`).
 - `include_companies` (optional): only for a lane tied to a kind of employer (schools, universities,
   hospitals, government). Words a LinkedIn employer name must contain, for example
   `["university", "college", "school board"]`. Watchlist employers always pass. Put the same kind of employer
@@ -67,6 +70,10 @@ catches up if the PC was off or asleep at the set time.
 
 **Mac:** `bash scanner/install-launchagent.sh 07:00` installs a launchd job. It catches up when the Mac
 wakes.
+
+Use this task (or the Mac launch agent), not your AI app's own scheduler or automations. An automation that
+asks the AI to "do the job email" skips the run script's send-unchanged and acknowledge steps (AGENTS.md
+rule 11).
 
 Registering does not run the task. The first run is at the set time. To prove the schedule now, add
 `-RunNow` to the Windows install command, or run `bash scanner/install-launchagent.sh --run-now` on a Mac.

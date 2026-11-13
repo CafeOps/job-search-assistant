@@ -54,7 +54,7 @@ Write: `<data>/TARGETS.md` and `exclude_companies` in `<data>/scanner-config.jso
 5. Form answers: notice period, how to word start dates (for example "two weeks after an offer is accepted"), and salary answers (expected, a range, the minimum they'd accept). Record them in SCREEN.md "Form answers".
 6. Anything a form needs a careful answer for: non-compete, past employment or relatives at a target company, a degree in progress, a work gap.
 7. Has any agency or recruiter submitted their resume anywhere in the last 6 months? Which employers? Those go into `flag_companies` (an agency may already hold right-to-represent there).
-8. Any applications or interviews already in progress? Which employers? Those go into `exclude_companies` and `<data>/PIPELINE.md`.
+8. Any applications or interviews already in progress? Which employer and job title? Each goes into `exclude_postings` as "Employer | Job title" and into `<data>/PIPELINE.md`. Use `exclude_companies` only when they want that whole employer gone from the digest.
 
 Write: `<data>/SCREEN.md` (from `templates/profile/SCREEN.md`), `<data>/scanner-config.json` (fields in `docs/06-daily-scan.md`) and `<data>/DECISIONS.md` lines.
 

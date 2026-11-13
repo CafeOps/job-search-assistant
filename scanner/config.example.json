@@ -49,6 +49,7 @@
 
   "exclude_companies": ["Current Employer Inc"],
   "include_companies": [],
+  "exclude_postings": ["Example Employer | Data Analyst"],
   "flag_companies": [],
   "agency_words": ["staffing", "recruit", "talent", "robert half", "randstad", "adecco", "teksystems", "hays", "kforce", "apex systems"],
 

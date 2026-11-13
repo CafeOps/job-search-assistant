@@ -327,6 +327,18 @@ class OutboxTests(Base):
         self.assertIsNone(jobscan.early_reject(watch, seen, queued, today))   # watchlist employers pass
         self.assertEqual(jobscan.requeue_reject(off), "employer not on include list")
 
+    def test_exclude_postings_hides_one_job_not_the_employer(self):
+        jobscan.init(cfg(exclude_postings=["Lakeside University | Program Coordinator (Term)", "no pipe here"]),
+                     Path(self.tmp.name))
+        seen, queued, today = {"ids": set(), "keys": {}}, {"ids": set(), "keys": set()}, dt.date.today()
+        same = mk(src="linkedin", jid="1", company="Lakeside University", title="Program Coordinator - Term")
+        other = mk(src="linkedin", jid="2", company="Lakeside University", title="Governance Coordinator")
+        elsewhere = mk(src="workday", jid="3", company="Hillcrest College", title="Program Coordinator (Term)")
+        self.assertEqual(jobscan.early_reject(same, seen, queued, today), "already applied")
+        self.assertEqual(jobscan.requeue_reject(same), "already applied")
+        self.assertIsNone(jobscan.early_reject(other, seen, queued, today))
+        self.assertIsNone(jobscan.early_reject(elsewhere, seen, queued, today))
+
     def test_zero_picks_with_one_dominant_reason_warns(self):
         jobscan.init(cfg(include_companies=["university"]), Path(self.tmp.name))
         jobs = {}

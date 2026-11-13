@@ -85,6 +85,20 @@ def words(lst):
     return re.compile(r"(?<![\w])(?:" + "|".join(re.escape(w) for w in lst) + r")(?![\w])", re.I)
 
 
+def applied_postings(entries):
+    """exclude_postings: "Employer | Job title" lines for jobs already applied to. -> list of (employer regex,
+    normalized title). The employer matches as words anywhere in the posting's employer name, the title must
+    match exactly after normalizing, so one application never hides the employer's other jobs."""
+    out = []
+    for e in entries or []:
+        if not isinstance(e, str) or "|" not in e:
+            continue
+        co, title = (p.strip() for p in e.split("|", 1))
+        if co and title:
+            out.append((words([co]), norm_title(title)))
+    return out
+
+
 def set_state(path):
     global STATE, OUT, SEEN, OUTBOX, STATUS, FIRSTSEEN, LOCK
     STATE = Path(path)
@@ -95,7 +109,7 @@ def set_state(path):
 def init(cfg, state_dir=None):
     """Load a config dict into the module globals. Tests call this with their own dict."""
     global CFG, SENIOR, OFFLANE, TITLE_KEEP, LANE, PLACES, EXCLUDE_CO, INCLUDE_CO, FLAG_CO, AGENCY
-    global STACK, CORE, PAY_PREFER, PAY_AVOID, MAX_AGE_H, CURRENCY
+    global STACK, CORE, PAY_PREFER, PAY_AVOID, MAX_AGE_H, CURRENCY, APPLIED
     CFG = cfg
     SENIOR = words(cfg.get("title_exclude_seniority"))
     OFFLANE = words(cfg.get("title_exclude_words"))
@@ -104,6 +118,7 @@ def init(cfg, state_dir=None):
     PLACES = words(cfg.get("location_words"))
     EXCLUDE_CO = words(cfg.get("exclude_companies"))
     INCLUDE_CO = words(cfg.get("include_companies"))
+    APPLIED = applied_postings(cfg.get("exclude_postings"))
     FLAG_CO = words(cfg.get("flag_companies"))
     AGENCY = words(cfg.get("agency_words"))
     STACK = [s.lower() for s in cfg.get("stack_terms", [])]
@@ -790,6 +805,11 @@ def is_sent(j, seen, today):
     return d >= (today - dt.timedelta(days=KEY_DAYS)).isoformat()
 
 
+def already_applied(j):
+    t = norm_title(j["title"])
+    return any(t == title and co.search(j["company"]) for co, title in APPLIED)
+
+
 def not_included(j):
     """include_companies limits LinkedIn results to employers whose name has one of the words (a lane tied to a
     kind of employer: schools, hospitals, government). Watchlist employers were picked by the user and pass."""
@@ -802,6 +822,8 @@ def early_reject(j, seen, queued, today):
         return "excluded employer"
     if not_included(j):
         return "employer not on include list"
+    if already_applied(j):
+        return "already applied"
     if is_sent(j, seen, today):
         return "already sent"
     if j["id"] in queued["ids"] or dedupe_key(j) in queued["keys"]:
@@ -820,6 +842,8 @@ def requeue_reject(j):
         return "excluded employer"
     if not_included(j):
         return "employer not on include list"
+    if already_applied(j):
+        return "already applied"
     keep = TITLE_KEEP and TITLE_KEEP.search(j["title"])
     if SENIOR and SENIOR.search(j["title"]) and not keep:
         return "title too senior"
@@ -1115,7 +1139,8 @@ def status():
 
 # ---------- main ----------
 
-ROUTINE_REJECTS = {"already sent", "already queued", "duplicate across sources", "too old", "dropped from queue"}
+ROUTINE_REJECTS = {"already sent", "already queued", "already applied", "duplicate across sources", "too old",
+                   "dropped from queue"}
 
 
 def one_reason_dominates(counts, total, picks):

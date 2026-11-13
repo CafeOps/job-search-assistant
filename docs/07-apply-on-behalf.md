@@ -67,6 +67,8 @@ folder. Record the browser and upload folder in PROGRESS.md as `browser: ready`.
 - Save a screenshot of the confirmation in `<data>/applications/` (never anywhere public). Add a row to
   `<data>/PIPELINE.md`: date, company, role, req number, source, salary answers given, anything unusual the
   form asked.
+- Add "Employer | Job title" to `exclude_postings` in `<data>/scanner-config.json`, so the daily email never
+  offers that job again. The employer's other jobs still come through.
 
 ## Never
 

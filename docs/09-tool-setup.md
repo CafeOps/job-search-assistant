@@ -32,6 +32,12 @@ connected in their app. Browser control needs the readiness test below.
 
    Both use the default model unless `email.ai_model` is set. Picks count as sent only when the command exits
    cleanly and prints exactly `SENT`.
+
+   Prove it once before you rely on it. Gmail working in the chat doesn't prove the command-line run has it.
+   First, in a fresh PowerShell or Terminal, check that the command exists (`Get-Command codex` or
+   `Get-Command claude`, Mac `which codex`): the scheduled task can only run what is on the PATH. Then do
+   one approved real run (`scanner\run.ps1 -Mail codex`). It fails safe: with no `SENT` line it stops with
+   "email not confirmed" and the picks stay queued. Read `<data>/scan/out/<date>.log`. If it fails, use SMTP.
 2. **SMTP fallback** (no connector). `tools/email_setup.py --install-deps` (ask first), then
    `--configure --provider gmail --from <sender> --to <recipient>`. The user makes an app password (Gmail: turn
    on 2-Step Verification, then https://myaccount.google.com/apppasswords. Work, school and security-key-only
