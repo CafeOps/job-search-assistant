@@ -15,7 +15,10 @@ Flag a concern once. If the user keeps the thing, log it in `<data>/DECISIONS.md
 ## Rule 0. Source of truth
 
 Every claim maps to an entry in PROFILE, STORIES, NUMBERS or SKILLS that the user has confirmed. An old
-document, or a note from another AI, is a lead and never a confirmation. No source, no claim. AI
+document, or a note from another AI, is a lead and never a confirmation. No source, no claim.
+Unconfirmed is a question, never a silent deletion. Put every unconfirmed claim from their own documents
+(a job, a title, a degree, a certificate, a skill, a number) in ONE numbered list for a yes or no. Never
+drop a job, a section or a credential that was on their last resume without saying so and asking. AI
 tools invent certifications, inflate numbers and push "Senior" titles the years don't back.
 The bar is "true and defensible in an interview", not an audit. The user is the final fact check.
 

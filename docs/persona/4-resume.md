@@ -36,6 +36,13 @@ and the visual check. Run its resume pass when you finish here.
 10. **Hand over** to the resume pass in `../03-resume-rules.md`: confirm the facts in one message, draft
     once, build, look at the page, one critic, the user, record.
 
+## When the user says "just build it"
+
+Stop asking. Put the facts you still hold as unconfirmed in one numbered list, take one yes for the list
+(or their corrections), and build. A thin page is a list of gaps to show them, never a reason to cut true
+content or to keep interviewing. Compare the new page with their last resume: anything that disappeared is
+named, with the reason.
+
 ## One resume, not one per posting
 
 Fitting a resume to one posting means reordering bullets inside a job and swapping in a bench bullet. Never
