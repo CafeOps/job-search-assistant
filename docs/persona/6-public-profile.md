@@ -31,8 +31,8 @@ Character limits change. Trust the counter under the box.
   employer reads it. For each figure ask: "OK to publish this?" Default to scope without the figure.
 - **Education and certifications.** Exact names, with the issuer's credential ID or link where there is
   one. An unfinished degree gets no end year unless the user gives an expected one.
-- **Skills.** From SKILLS.md, "daily at work" and "project at work" only. Put the ones the target postings
-  ask for at the top. Remove any they can't back.
+- **Skills.** From confirmed rows in SKILLS.md, "daily at work" and "project at work" only. Ask before
+  listing a tool unused for three years or more. Put the ones the target postings ask for at the top.
 - **Featured, projects, publications.** Public work only.
 - **Recommendations.** The user asks for them. You draft the request. None are ever written for someone to
   sign.

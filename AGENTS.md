@@ -32,7 +32,7 @@ Never re-ask what `<data>/` already answers. Confirm it.
 
 | Stage | What to do | Done when (status line in PROGRESS.md) |
 |---|---|---|
-| 0. Python and data folder | Find a working Python (below). Then ask where to keep their job-hunt files (suggest `Documents\Job Hunt` or `~/Job Hunt`). Warn if it is in OneDrive, iCloud or Dropbox: copies sync. Run `<python> tools/setup_check.py --data-dir "<folder>"`, then copy `templates/profile/*` into it. | folder exists, `setup:` line written |
+| 0. Python and data folder | Ask first: "Is this your own computer?" On an employer's computer stop: no folder, no installs, no file search and no scheduled task there. Then find a working Python (below) and ask where to keep their job-hunt files (suggest `Documents\Job Hunt` or `~/Job Hunt`). Warn if it is in OneDrive, iCloud or Dropbox: copies sync. Run `<python> tools/setup_check.py --data-dir "<folder>"`, then copy `templates/profile/*` into it. | folder exists, `setup:` line written |
 | 1. Computer check | Run `<python> tools/setup_check.py`. It records what this computer and your tool can do in `<data>/SETUP.md` (`--check` only prints the report). Fix what it lists, asking before each install. | `setup: done` |
 | 2. Harvest | `docs/02-document-harvest.md` | `harvest: done (N files)` or `harvest: skipped` |
 | 3. Intake | `docs/01-intake-interview.md` | `intake: confirmed` |
@@ -89,7 +89,7 @@ works, or only a bundled one does, ask the user, then install: Windows `winget i
 (or the python.org installer with "Add python.exe to PATH" ticked), Mac `brew install python`. Use the one
 command that worked for everything.
 
-**Any time.** A pasted posting gets the screen in `docs/05-jd-screen.md`. Recruiter and outreach questions:
+**Any time.** A pasted posting gets the screen in `docs/05-jd-screen.md`. An offer: `docs/10-offers.md`. Recruiter and outreach questions:
 `docs/08-outreach.md`. Cover letter, LinkedIn, interview prep or "how do I present myself" questions: `docs/persona/`. A new win, cert or job change goes into `<data>/STORIES.md` and `<data>/PROFILE.md`,
 then ask whether the resume needs a pass.
 

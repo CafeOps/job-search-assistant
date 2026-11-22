@@ -24,6 +24,9 @@ Thresholds are in `<data>/SCREEN.md`, set in the intake.
 7. **Years asked far above the user's** (10+ asked, 3 held): SKIP unless the user is pitching for a role on that team through outreach.
 8. **Scope below their level** (queue work, no ownership): SKIP unless the money changes their life.
 9. **Their deal breakers** (travel, on-call, relocation, clearance, stack).
+10. **Conflicts.** Check "Never send to" in `<data>/TARGETS.md` (the current employer's vendors included),
+    `flag_companies` in `<data>/scanner-config.json` and `<data>/PIPELINE.md`. A never-send employer or a job
+    already applied to: SKIP. A flagged employer: say why before anything else.
 
 ## Market bands
 

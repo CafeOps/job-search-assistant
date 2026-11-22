@@ -24,7 +24,7 @@ Free plans and other AI tools aren't supported.
 When the AI asks permission to run something, read it, then allow it.
 
 Last resort, if you truly can't use Codex or Claude Code: download the ZIP (green **Code** button, **Download
-ZIP**), extract it, attach `AGENTS.md` to a normal chat and say "Follow this." It can interview you, write your
+ZIP**), extract it, attach `AGENTS.md` and the files in `docs/` to a normal chat and say "Follow AGENTS.md." It can interview you, write your
 resume text and screen job postings, but you run every step on your computer yourself.
 
 ## What it does
@@ -57,7 +57,7 @@ Only want this part, with no job emails? Say **"Resume only."** The guides are i
 
 ## What you need
 
-- A Windows 10/11 PC or a Mac, and a paid ChatGPT or Claude plan. No API key.
+- Your own Windows 10/11 PC or Mac (never a work computer), and a paid ChatGPT or Claude plan. No API key.
 - About an hour for setup, in one or two sittings. Stop any time and say "continue" later.
 - Already have a resume? Say so at the start. The quick start gets your daily job email running first and
   leaves the resume work for later.
@@ -84,6 +84,8 @@ Only want this part, with no job emails? Say **"Resume only."** The guides are i
   once a day. Company career sites on your watchlist are more reliable.
 - Job matches are a first pass. Read the full posting.
 - It won't write things that aren't true.
+- The AI's work counts against your plan's usage limits. If a permission prompt looks unfamiliar, ask the AI
+  what the command does before you allow it.
 
 ## For the technical folks
 

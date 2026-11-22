@@ -15,7 +15,7 @@ Questions go to: <the user, or the session that prepared this>.
 - Pay posted: | Closes:
 
 ## Files
-- Resume to upload: <exact path to the live PDF>. Never from a history folder.
+- Resume to upload: <exact path to the live .docx, or the live PDF if the posting asks for PDF>. Never from a history folder.
 
 ## Sign-in
 The user signs in and creates any account. Never type, invent or store a password. At a verification-code

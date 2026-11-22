@@ -30,7 +30,8 @@ connected in their app. Browser control needs the readiness test below.
    - ChatGPT: `scanner/run.ps1 -Mail codex` or `MAIL=codex bash scanner/run.sh` (runs `codex exec` with the
      ChatGPT Gmail connector).
 
-   Both use the default model unless `email.ai_model` is set. Picks count as sent only when the command exits
+   Both use the default model unless `email.ai_model` is set. Know the trade-off: this route passes text
+   read from job sites through an AI that can send mail. SMTP sends with plain Python and no AI in the loop. Picks count as sent only when the command exits
    cleanly and prints exactly `SENT`.
 
    Prove it once before you rely on it. Gmail working in the chat doesn't prove the command-line run has it.
@@ -60,6 +61,16 @@ application packet: every answer ready to paste, in the form's order.
 - **Drafts and outreach notes:** always fine. The user sends each one, or approves its exact text before you
   send it through a connector (`docs/08-outreach.md`).
 - **Phone:** Claude Remote Control or the mobile apps. ChatGPT: the mobile app.
+
+## When the search ends
+
+Ask whether they want to pause (keep everything for next time) or remove it all. One yes per step.
+- Stop the daily scan and remove the saved email password: the commands are in `docs/06-daily-scan.md`.
+  With the mail connector, show them where to disconnect it in their AI app's settings.
+- Update `scan:` and `email:` in PROGRESS.md and note it in AUTHORIZATIONS.md.
+- The data folder: offer a backup copy to a drive of their own (say so if it syncs to a cloud service).
+  STORIES, PROFILE, NUMBERS and SKILLS are worth keeping for the next search. Never delete the data folder
+  yourself: tell them its path so they can.
 
 ## Acceptance checklist (run in both families before sharing a new version)
 

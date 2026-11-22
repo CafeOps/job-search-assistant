@@ -60,13 +60,15 @@ folder. Record the browser and upload folder in PROGRESS.md as `browser: ready`.
   otherwise.
 - Searchable dropdowns: typing into a closed one can pick the wrong item. Open it, click the option, check
   the value shown. Re-check after the page scrolls.
-- Uploads: if the tool refuses the resume's path, copy the file to a folder it can read, upload, then
-  delete the copy.
+- Uploads: if the tool refuses the resume's path, copy the file to a temporary folder outside the kit that
+  it can read, upload, then delete the copy at once.
 
 ## Submitting
 
 - Read the whole review page against the handoff.
-- Submit only with the go-ahead recorded for this application.
+- Submit only with the go-ahead recorded for this application. A go-ahead given in advance covers only
+  what the handoff answers. If the form asks anything it doesn't (an agreement to accept, a new screening or
+  pay question), stop and ask.
 - Save a screenshot of the confirmation in `<data>/applications/` (never anywhere public). Add a row to
   `<data>/PIPELINE.md`: date, company, role, req number, source, salary answers given, anything unusual the
   form asked.

@@ -9,7 +9,7 @@ Old resumes and cover letters hold the titles, dates, tools and numbers the user
 3. List candidates, no copying: `<python> tools/harvest.py` plus any `--root` or `--only`. A big drive takes a few minutes, so tell the user it's working.
 4. Read `<data>/source/harvest/candidates.md`. Propose keeping files with their name or writing, including every distinct version of their own resume, and dropping other people's resumes, templates, resignation letters and exact duplicates. Get a yes on the short list.
 5. Copy the approved files: `<python> tools/harvest.py --copy --pick 3,a1b2c3d4` (row numbers or ids from candidates.md), or `--copy --all`. Copies go to `<data>/source/harvest/` with a date and hash in the name, and `INDEX.md` there records where each came from.
-6. Ask for what a search won't find: their LinkedIn profile as a PDF (Me > View profile > More > Save to PDF), resumes attached to sent emails (only with mail access and their agreement), and performance reviews, reference letters, certificates and offer letters.
+6. Ask for what a search won't find: their LinkedIn profile as a PDF (Me > View profile > More > Save to PDF), resumes attached to sent emails (only with mail access and their agreement), and performance reviews, reference letters, certificates and offer letters. Before they hand over a review, a contract or an offer letter, give the warning in `persona/1-evidence-sweep.md`: these hold ID numbers, pay and other people's names, and what you read goes to your provider.
 7. Can't run scripts? Ask the user to search their own folders for "resume", "CV" and "cover letter" and give you the files.
 
 If `candidates.md` reports many PDFs matched by name only, offer to install the PDF tool (see `<data>/SETUP.md`) and list again.

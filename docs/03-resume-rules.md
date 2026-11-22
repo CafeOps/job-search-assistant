@@ -1,7 +1,8 @@
 # 03. Resume rules and the resume pass
 
-Default rules. In the intake, copy them to `<data>/RESUME-RULES.md` and fill in the blanks. After that the
-user's file wins.
+Default rules. In stage 4, fill in `<data>/RESUME-RULES.md` with the user (copy the template if it is
+missing), get their yes and record `rules: confirmed YYYY-MM-DD` in PROGRESS.md. After that the user's
+file wins.
 
 ## How rules are made
 
@@ -122,6 +123,7 @@ Write `<data>/resume/resume.md` in the format of `examples/john-smith/resume.md`
 5. **One critic.** A reviewer with a fresh context (Claude Code: a new subagent. Codex: a new session)
    gets the PDF, the page image and, for a targeted version, the job posting. It returns findings only,
    without knowing who wrote it. One critic per version, never a panel. Its verdict never overrides the user.
+   If your tool can't start a fresh reviewer, skip this step and say so.
 6. **Show the user** the page image. Apply their corrections without re-arguing, then build again (the gate
    reruns).
 7. **Record** in PROGRESS.md: `resume: approved YYYY-MM-DD (gate: automatic PASS, visual PASS, user approved): <paths>`.
@@ -162,6 +164,17 @@ rules and no quality gate. Rule 0 still holds: the file shows where a claim came
    resume that didn't go through the gate.
 
 The full resume pass stays available at any time.
+
+## Quick update (a new cert, title or win)
+
+For a user with an approved resume and one new confirmed fact. No intake and no persona build.
+1. Confirm the details (the cert's exact name, code and date. The HR title and month. The story's part,
+   result and number) and add them to PROFILE, STORIES, NUMBERS and SKILLS.
+2. Edit `<data>/resume/resume.md`. If the bullet count is fixed (Rule 2), the new bullet replaces the
+   weakest one, and you tell the user which.
+3. Build, look at the page and get their approval, as in the resume pass.
+4. Update "Last resume update" in RESUME-RULES.md and the `resume: approved ...` line in PROGRESS.md.
+   Remind them once to rerun the consistency check in `persona/6-public-profile.md`.
 
 ## Staleness check
 

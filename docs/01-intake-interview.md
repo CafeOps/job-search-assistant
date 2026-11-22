@@ -43,7 +43,7 @@ Write: `<data>/PROFILE.md` (history) and `<data>/NUMBERS.md` (each figure with s
 5. Where do they want to be in 3 to 5 years? (It ranks matches. It doesn't filter.)
 6. Employers never to send them to: current and former employers, the current employer's vendors, companies with a bad history.
 
-Write: `<data>/TARGETS.md` and `exclude_companies` in `<data>/scanner-config.json`.
+Write: `<data>/TARGETS.md` and `exclude_companies` in `<data>/scanner-config.json` (copy `scanner/config.example.json` there first if the file is missing).
 
 ## Phase 4. Money and deal breakers
 
@@ -76,14 +76,14 @@ the full question bank and a stop rule, is `persona/2-deep-interview.md`.
 
 1. Ask for something they wrote that sounds like them (an email, a post). Note their habits.
 2. Ask which words they hate seeing on resumes. Seed `<data>/VOICE.md` from the default banned list in `docs/03-resume-rules.md` and add theirs.
-3. Read `docs/09-tool-setup.md` and set up only what they pick: the daily job digest by email, you filling in applications in their browser, you drafting emails and outreach notes, phone access to this chat.
+3. Ask which extras they want: the daily job digest by email, you filling in applications in their browser, you drafting emails and outreach notes, phone access to this chat. Note the answer in PROGRESS.md. The setup itself happens in stages 6 and 7 (`docs/09-tool-setup.md`).
 
 ## Done when
 
 - `<data>/PROFILE.md`, `TARGETS.md`, `SCREEN.md`, `STORIES.md`, `VOICE.md`, `NUMBERS.md` and `scanner-config.json` are filled from the user's own answers, and they confirmed each summary.
 - You compared each with its match in `examples/john-smith/`. Where theirs is thinner, ask one more round or record the gap. "Done" means as complete as the facts allow, not as long as the example.
 - `<data>/PROGRESS.md` says `intake: confirmed YYYY-MM-DD`.
-- Next: the resume pass in `docs/03-resume-rules.md`.
+- Next: stage 4, the rules, then the resume pass (both in `docs/03-resume-rules.md`).
 
 Quick start (AGENTS.md): done when PROFILE.md (identity), TARGETS.md, SCREEN.md and `scanner-config.json`
 are filled and confirmed. Record `intake: quick start (phases 1, 3, 4) YYYY-MM-DD` and go straight to the
