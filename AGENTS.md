@@ -61,23 +61,24 @@ The one gate: before that first application, the resume must be `approved` (stag
 confirmed` (the claim check in `docs/03-resume-rules.md`, a few minutes).
 
 **Resume only.** If the user wants help with their resume, cover letters or profile and nothing else:
-1. Stages 0 and 1. In stage 1 fix only what the resume tools need.
+1. Stages 0 and 1. In stage 1 fix only what the resume tools need. As soon as PROGRESS.md exists, record
+   `scan: not wanted`, `email: not wanted` and `browser: not wanted`. All count as deferred.
 2. Intake phase 1, phase 3 (direction, for TARGETS.md) and phase 4 items 5 and 6 only (form wording and
    careful answers, for SCREEN.md. Pay floors only if they want them). Ask for 5 to 10 real postings for the
-   job they want, or find them together, and save the links in TARGETS.md. Skip the scanner config.
+   job they want, or find them together, and save the links in TARGETS.md. Skip the scanner config. Then record
+   `intake: resume only (phases 1, 3, part of 4) YYYY-MM-DD`. It counts as deferred too.
 3. The persona build (`docs/persona/README.md`) steps 1 to 3, without the offer.
 4. Stage 4 (the rules, `docs/03-resume-rules.md`), then persona step 4 and the stage 5 pass and gate.
-5. Record `intake: resume only (phases 1, 3, part of 4) YYYY-MM-DD`, `scan: not wanted`, `email: not wanted`
-   and `browser: not wanted`. All count as deferred. Never set up the daily scan, the email or applications
-   unless the user asks later.
+5. Persona steps 5 to 7 (letters, profile, interview prep) when they want them. Never set up the daily
+   scan, the email or applications unless the user asks later.
 
 **The persona build** (`docs/persona/README.md`) is the deep track for the resume, cover letters and the
 public profile: a sweep for every proof document the user will share, a job-by-job interview with a stop
 rule, then one positioning page that everything is written from. Offer it once before the first resume
 pass. A no is not raised again. `persona: not started` or `declined` never blocks a stage. Once it has
-started (`sweep done`, `interview: ...`, `coverage ...`), continue it before stage 5 and before intake
-phases 2, 5 and 6, until `positioning confirmed` leads into its step 4 or the user stops it
-(`persona: stopped YYYY-MM-DD`).
+started (`sweep done`, `interview: ...`, `coverage ...`), continue it before stage 4, stage 5 and intake
+phases 2, 5 and 6. After `positioning confirmed`: stage 4 if the rules aren't confirmed, then its step 4
+(`docs/persona/4-resume.md`) and the stage 5 pass. The user can stop it (`persona: stopped YYYY-MM-DD`).
 
 **Finding a working Python.** Try `py -3 --version` (Windows), `python3 --version`, `python --version`. A
 command counts only if it prints version 3.9 or newer. On Windows, `python` can be a Microsoft Store
@@ -89,13 +90,13 @@ works, or only a bundled one does, ask the user, then install: Windows `winget i
 command that worked for everything.
 
 **Any time.** A pasted posting gets the screen in `docs/05-jd-screen.md`. Recruiter and outreach questions:
-`docs/08-outreach.md`. Cover letter, LinkedIn or "how do I present myself" questions: `docs/persona/`. A new win, cert or job change goes into `<data>/STORIES.md` and `<data>/PROFILE.md`,
+`docs/08-outreach.md`. Cover letter, LinkedIn, interview prep or "how do I present myself" questions: `docs/persona/`. A new win, cert or job change goes into `<data>/STORIES.md` and `<data>/PROFILE.md`,
 then ask whether the resume needs a pass.
 
 ## Rules that hold for every user
 
-1. **Only true claims.** Every resume line, form answer and cover-letter sentence must trace to something the
-   user told you or gave you. No source: ask, or leave it out. Never invent a certification, number, title,
+1. **Only true claims.** Every resume line, form answer and cover-letter sentence must trace to a fact the
+   user confirmed. An old document they gave you is a lead, never a confirmation. No source: ask, or leave it out. Never invent a certification, number, title,
    date or degree. The bar is "true in general and defensible in an interview".
 2. **Screening answers are truthful.** Background checks are real. Never answer "Yes" to a requirement they
    don't meet. Don't volunteer a gap the question didn't ask about.
@@ -140,7 +141,7 @@ then ask whether the resume needs a pass.
 
 ```
 docs/                    step guides
-docs/persona/            the deep track: evidence sweep, deep interview, positioning, resume, letters, profile
+docs/persona/            the deep track: evidence sweep, deep interview, positioning, resume, letters, profile, interviews
 scanner/                 the daily scan, the email sender, the scheduler installers
 templates/               files you copy into <data>/, and a plain resume layout
 examples/john-smith/  a complete fake profile (see its README.md). Never copy its facts.

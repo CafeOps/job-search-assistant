@@ -24,6 +24,9 @@ Last updated: YYYY-MM-DD
 - Start date answer (user-approved wording, e.g. "two weeks after an accepted offer"):
 - How they heard about the job: the real source for each application (ask when unknown, never assume)
 
+## Careful topics (the true fact, and the wording the user approved for forms and interviews)
+-
+
 ## Market bands (title, years, range, source, month checked)
 | Title | Years | Range | Source | Checked |
 |---|---|---|---|---|

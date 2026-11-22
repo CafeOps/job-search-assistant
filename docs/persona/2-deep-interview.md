@@ -25,8 +25,9 @@ it shown. No unexplained month survives a background check.
 
 ## Adapt the drill to the person
 
-- **Student or new graduate.** Run the full drill on their two or three best projects, placements,
-  co-ops, labs or volunteer roles. Treat each one as a job.
+- **Student or new graduate.** Drill their two or three best projects, placements, co-ops, labs or
+  volunteer roles: the setting, the size, the tools, and one or two stories each. In COVERAGE.md mark the
+  HR title and duties "n/a" for a school project. They go on the slate in `4-resume.md` like jobs.
 - **Manager of people.** In B, D and G also ask: how many people report to them, directly and through
   others. Who they hired, trained up or had promoted. The budget they hold. One hard people problem.
 - **Trades, health care, teaching, service.** Read "tool" as equipment, procedure, licence or curriculum.
@@ -144,8 +145,8 @@ and never change a figure a form prefilled from the user's own profile, on your 
 
 ## Careful topics
 
-Ask once, plainly, and record two things: the true fact, and the wording the user approves for forms and
-interviews. Gaps, short stays, a layoff or firing, an unfinished degree, a career change, visa status, a
+Ask once, plainly, and record two things under "Careful topics" in `<data>/SCREEN.md`: the true fact, and the
+wording the user approves for forms and interviews. Gaps, short stays, a layoff or firing, an unfinished degree, a career change, visa status, a
 non-compete, side work, a reference who must not be called. They never owe you a health or family reason.
 
 References: two or three people who can vouch for their work, what each one can confirm, and whether they

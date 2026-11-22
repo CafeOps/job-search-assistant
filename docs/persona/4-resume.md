@@ -10,7 +10,7 @@ and the visual check. Run its resume pass when you finish here.
    (Rule 2), which jobs get space (the last ten years. Older ones get a line each), and the title layers
    (Rule 3). Promotions at one employer sit under one employer heading, each title with its own dates, so
    the growth shows.
-2. **The slate.** For each job, list every usable story as a candidate bullet with its lane, how many target
+2. **The slate.** For each job (and each drilled project, for a student), list every usable story as a candidate bullet with its lane, how many target
    postings ask for it (the market map in PERSONA.md), its strength (a measured result or a passed
    audit or inspection, then an estimate, then scope) and how recent it is. Pick the top ones so that no
    two cover the same lane. The first bullet of the current job is the strongest match to the lane. Show the user the picks and the bench in ONE message.
@@ -19,7 +19,8 @@ and the visual check. Run its resume pass when you finish here.
    each. A number keeps its status word ("estimated"). Fit the width band. No internal names.
 4. **One duties bullet** for the current job: a scope line that says what they run day to day, so the reader
    sees the job and not only the projects.
-5. **Skills** come from SKILLS.md only. "Daily at work" and "project at work" go in. "Study or lab" goes in
+5. **Skills** come from confirmed rows in SKILLS.md only. "Daily at work" and "project at work" go in. Ask
+   before listing a tool last used three or more years ago. "Study or lab" goes in
    only if labelled and the user wants it. "Exposure" stays off. Three or four labelled lines, ordered by
    what the target postings ask for most, spelled as the postings spell them.
 6. **Headline and summary** from PERSONA.md.

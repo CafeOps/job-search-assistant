@@ -165,7 +165,8 @@ class HarvestTests(unittest.TestCase):
                   "Reference letter - manager.pdf": "reference", "award photo.jpg": "award",
                   "NursingLicense.pdf": "certificate", "Profile (1).pdf": "linkedin",
                   "Perf_Review_2025.pdf": "review", "JD_Senior_Analyst.pdf": "offer or contract",
-                  "Capstone_Slides.pptx": "portfolio", "Degree_Audit.pdf": "transcript"}
+                  "Capstone_Slides.pptx": "portfolio", "Degree_Audit.pdf": "transcript",
+                  "2025_Degree.pdf": "certificate", "Bio_2025.pdf": "bio"}
         ignored = ["My Resume 2019.txt", "LICENSE.txt", "holiday.jpg", "Certificate of Insurance.pdf",
                    "backup.zip", "Portfolio statement Q3.pdf", "notes.txt", "IRS_tax_transcript_2025.pdf",
                    "zoom_meeting_transcript.docx", "home_appraisal_2024.pdf", "certificate_of_birth.pdf",

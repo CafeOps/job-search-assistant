@@ -30,4 +30,4 @@ Outreach notes usually do the job. When a letter is needed: one page (why this r
 
 ## Interviews
 
-One folder per company, `<data>/interviews/<company>/`: the posting, a fit map (posting line to story), company notes, a study sheet, the story entries to use, and a review after each round.
+One folder per company, `<data>/interviews/<company>/`: the posting, a fit map (posting line to story), company notes, a study sheet, the story entries to use, and a review after each round. The full method: `persona/7-interview-prep.md`.

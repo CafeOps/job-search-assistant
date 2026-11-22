@@ -19,7 +19,7 @@ user picks them, or take them from the daily digest and PIPELINE.md).
 3. **Three themes.** What they are known for. Each theme is a capability, two stories that show it, and a
    number or a scope. Use the contrast question from the interview: what do they do that others with the
    title don't?
-4. **The level.** The honest one, from years in the lane and the title layers (Rule 3). No seniority the
+4. **The level.** The honest one, from years in the lane and the HR-record titles in PROFILE.md. No seniority the
    years don't back.
 5. **The one-liner.** "<Role or lane> who <does what> for <whom or where>, <one proof point>." Write three
    versions from their own phrases. They pick one or fix one.
@@ -44,6 +44,6 @@ user picks them, or take them from the daily digest and PIPELINE.md).
 
 ## Done when
 
-PERSONA.md has the market map, lane, themes, one-liner, headline, summary, pitch, bios, the "not" list and
+PERSONA.md has the market map, lane, themes, one-liner, headline, summary, pitch, bios (if any), the "not" list and
 the proof map, and the user confirmed it. PROGRESS.md says `persona: positioning confirmed YYYY-MM-DD`.
-Next: `4-resume.md`. `5-cover-letters.md` and `6-public-profile.md` can run any time from here.
+Next: `4-resume.md`. The letter, profile and interview guides come after it.

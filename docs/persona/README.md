@@ -31,8 +31,10 @@ Start by copying `templates/persona/*` into `<data>/`. Skip any file that alread
 | 4. Resume | `4-resume.md`, then the pass and gate in `../03-resume-rules.md` | `<data>/resume/` | the stage 5 `resume: approved ...` line |
 | 5. Cover letters | `5-cover-letters.md` | `<data>/cover-letters/` | none. Each letter is approved on its own |
 | 6. Public profile | `6-public-profile.md` | PERSONA.md "Profile text" | `profile text approved YYYY-MM-DD` |
+| 7. Interview prep | `7-interview-prep.md` | `<data>/interviews/<company>/` | none. One folder per interview |
 
-Steps 1 to 4 run in order. Steps 5 and 6 can run any time after step 3. Keep one `persona:` line and move it
+Steps 1 to 4 run in order. Steps 5, 6 and 7 run any time after step 4, once the
+resume and the title layers exist. Keep one `persona:` line and move it
 forward, so any tool can pick up from the file alone.
 
 How it fits the stages: the sweep completes stage 2 (record the `harvest:` line too). The deep interview
@@ -60,8 +62,9 @@ themselves. Log the rest as gaps.
 
 The rules in AGENTS.md all apply. These matter most here:
 
-- **Only true claims.** A fact has a source: a document, or "user, YYYY-MM-DD". Mark each fact confirmed,
-  from a document, or unconfirmed. An unconfirmed fact never reaches a resume, a letter, a form or a profile.
+- **Only true claims.** A fact has a source: a document, or "user, YYYY-MM-DD". Every fact is unconfirmed
+  until the user says yes to it. A document is a lead, never a confirmation. Only confirmed facts reach a
+  resume, a letter, a form or a profile.
 - **Never feed the answer.** Ask open questions and offer ranges or lists. "Was it about 30%?" plants a
   number. "Did anyone measure it? What was it before and after?" finds one.
 - **The computer and the accounts are the user's.** List first. Copy only what they approve. Never move,

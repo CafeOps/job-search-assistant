@@ -104,8 +104,8 @@ EVIDENCE_NOT = re.compile(
     rf"(fishing|hunting|boating|pet|dog|marriage|gun|firearm|liquor|tv|business|radio){_S}licen[cs]e|"
     rf"(home|house|property|real{_S}estate|car|auto|vehicle|jewel+e?ry|art){_S}appraisal|"
     rf"(401k|ira|rrsp|tfsa|stock|crypto|retirement|pension){_S}portfolio|revenue{_S}recognition|"
-    rf"(facial|face|speech|voice|image|character|pattern){_S}recognition|\d{_S}degree|"
-    rf"bio{_S}(\d|lab|exam|notes|chapter|quiz)|"
+    rf"(facial|face|speech|voice|image|character|pattern){_S}recognition|(360|180|90|45){_S}degree|"
+    rf"bio{_S}(\d{{3}}(?!\d)|lab|exam|notes|chapter|quiz)|"
     rf"(movie|film|book|restaurant|hotel|travel|gift|music|product){_S}recommendations?", re.I)
 
 
