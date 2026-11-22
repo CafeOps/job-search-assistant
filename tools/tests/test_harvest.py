@@ -158,6 +158,45 @@ class HarvestTests(unittest.TestCase):
         names = [Path(c["path"]).name for c in json.loads((self.dest / "manifest.json").read_text(encoding="utf-8"))["candidates"]]
         self.assertEqual(names, ["resume.txt"])
 
+    def test_evidence_lists_proof_documents_by_name(self):
+        wanted = {"PL-300 Certificate.pdf": "certificate", "Offer Letter 2023.docx": "offer or contract",
+                  "Year-End Review 2024.pdf": "review", "Profile.pdf": "linkedin",
+                  "Basic_LinkedInDataExport_01-02-2027.zip": "linkedin", "Unofficial Transcript.pdf": "transcript",
+                  "Reference letter - manager.pdf": "reference", "award photo.jpg": "award"}
+        ignored = ["My Resume 2019.txt", "LICENSE.txt", "holiday.jpg", "Certificate of Insurance.pdf",
+                   "backup.zip", "Portfolio statement Q3.pdf", "notes.txt"]
+        for name in list(wanted) + ignored:
+            (self.src / name).write_bytes(name.encode())
+        res = harvest.scan([self.src], quiet=True, evidence=True)
+        self.assertEqual({Path(c["path"]).name: c["reason"] for c in res["candidates"]}, wanted)
+        text = harvest.write_listing(res, self.dest)
+        self.assertIn("# Evidence candidates", text)
+        self.assertIn("--evidence --copy --pick", text)
+        copied, skipped = harvest.copy_from_manifest(self.dest, copy_all=True)
+        self.assertEqual((len(copied), len(skipped)), (len(wanted), 0))
+
+    def test_default_scan_ignores_evidence_only_files(self):
+        (self.src / "PL-300 Certificate.png").write_bytes(b"x")
+        (self.src / "Offer Letter.txt").write_text("hello")
+        (self.src / "resume.txt").write_text("one")
+        res = self.list_()
+        self.assertEqual([Path(c["path"]).name for c in res["candidates"]], ["resume.txt"])
+        self.assertIn("# Harvest candidates", (self.dest / "candidates.md").read_text(encoding="utf-8"))
+
+    def test_evidence_cli_uses_its_own_folder(self):
+        (self.src / "Diploma.pdf").write_bytes(b"x")
+        (self.src / "resume.txt").write_text("one")
+        ev = self.tmp / "out" / "evidence"
+        old = harvest.DEST, harvest.EVIDENCE_DEST
+        harvest.DEST, harvest.EVIDENCE_DEST = self.dest, ev
+        try:
+            self.assertEqual(harvest.main(["--only", str(self.src), "--evidence"]), 0)
+            self.assertEqual(harvest.main(["--evidence", "--copy", "--all"]), 0)
+        finally:
+            harvest.DEST, harvest.EVIDENCE_DEST = old
+        self.assertFalse(self.dest.exists())
+        self.assertEqual(len([f for f in ev.iterdir() if f.name.endswith("_Diploma_" + f.name[-12:])]), 1)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -10,7 +10,11 @@ Read this first every session. Continue at the first stage that is neither done 
 - resume: not started       (no prior resume / imported, claims unconfirmed: <path> /
                              existing, claims confirmed YYYY-MM-DD: <path> sha256 <12 chars> /
                              draft / approved YYYY-MM-DD: <docx path>, <pdf path>)
-- scan: not set up          (config drafted / dry run OK / tested YYYY-MM-DD)
+- persona: not started      (optional deep track, docs/persona/README.md. Never blocks a stage.
+                             declined YYYY-MM-DD / sweep done YYYY-MM-DD (N sources) / interview: role N of M /
+                             coverage met YYYY-MM-DD / coverage accepted with gaps YYYY-MM-DD /
+                             positioning confirmed YYYY-MM-DD / profile text approved YYYY-MM-DD)
+- scan: not set up          (config drafted / dry run OK / tested YYYY-MM-DD / not wanted)
 - email: not set up         (configured / test received / scheduled HH:MM / verified YYYY-MM-DD)
 - browser: not set up       (ready: <browser>, upload folder <path> / manual packets)
 

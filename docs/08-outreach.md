@@ -26,7 +26,7 @@
 
 ## Cover letters
 
-Outreach notes usually do the job. When a letter is needed: one page, three short paragraphs (why this role, two proof points mapped to the posting, a plain close), in the user's voice, checked against the resume's banned list.
+Outreach notes usually do the job. When a letter is needed: one page, three short paragraphs (why this role, two proof points mapped to the posting, a plain close), in the user's voice, checked against the resume's banned list. The full method: `persona/5-cover-letters.md`.
 
 ## Interviews
 

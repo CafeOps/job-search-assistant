@@ -40,6 +40,21 @@ You answer questions about your work and goals (rough answers are fine). The AI 
 
 You don't need to code. The AI does the technical parts and asks before installing anything.
 
+## Resume, cover letter and professional persona
+
+Want more than a quick resume? Say **"Run the persona build."** The AI then:
+
+- gathers your proof, with your approval: old resumes, certificates, transcripts, reviews, offer letters,
+  your LinkedIn export, your own projects
+- interviews you job by job, in short sittings, until it has the full picture: what you ran, what you
+  changed, the numbers, and what backs them up
+- writes one page that says who you are professionally, then builds your resume, cover letters and LinkedIn
+  text from it, so they all match
+- keeps a table of your skills with honest years of experience, ready for application forms
+
+Only want this part, with no job emails? Say **"Resume only."** The guides are in
+[`docs/persona/`](docs/persona/README.md).
+
 ## What you need
 
 - A Windows 10/11 PC or a Mac, and a paid ChatGPT or Claude plan. No API key.

@@ -69,7 +69,8 @@ Then collect 5 to 8 stories with `docs/04-story-bank.md`, one or two per round. 
 - "What do coworkers come to you for?"
 - "What saved someone time or money? Roughly how much?"
 
-Write each story into `<data>/STORIES.md` in that doc's format.
+Write each story into `<data>/STORIES.md` in that doc's format. The deep version of phases 2, 5 and 6, with
+the full question bank and a stop rule, is `persona/2-deep-interview.md`.
 
 ## Phase 6. Voice and tool setup
 

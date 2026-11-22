@@ -10,6 +10,10 @@ Usage:
   py tools/harvest.py --copy --all            # copy every candidate in the manifest
   py tools/harvest.py --root "D:\\Old Laptop Backup"   # add a folder to search (repeatable)
   py tools/harvest.py --only "D:\\Old Laptop Backup"   # search ONLY this folder, no default folders (repeatable)
+  py tools/harvest.py --evidence              # list PROOF documents instead (certificates, transcripts,
+                                              # reviews, offer letters, references, awards, LinkedIn exports),
+                                              # by file name only, into <data folder>/source/evidence/
+  py tools/harvest.py --evidence --copy --pick 2,5   # copy from the evidence list
 
 --copy does NOT rescan. It reads manifest.json written by the last listing, so the numbers and ids the
 user approved always point at the same files. Before copying it checks each original still exists and
@@ -56,6 +60,59 @@ TEXT_HINT = re.compile(r"\b(experience|employment history|work history)\b.*\b(ed
                        r"\bdear (hiring|recruit|sir|madam)|\bsincerely\b|\bcover letter\b", re.I | re.S)
 MAX_MB = 20
 PROGRESS_SECONDS = 2.0
+
+# ---------- evidence mode (docs/persona/1-evidence-sweep.md) ----------
+# Proof documents, matched by file NAME only: no file is opened, so cloud-only files stay in the cloud.
+EVIDENCE_DEST = paths.data_dir() / "source" / "evidence"
+EVIDENCE_EXTS = EXTS | {".png", ".jpg", ".jpeg", ".heic", ".tif", ".tiff", ".zip"}
+_S = r"[ _.-]*"
+_W = lambda words: rf"(?<![a-z])(?:{words})(?![a-z])"  # whole word, where a prefix or suffix would mislead
+EVIDENCE_KINDS = [(kind, re.compile(rx, re.I)) for kind, rx in [
+    ("linkedin", r"linkedin"),
+    ("transcript", rf"transcript|academic{_S}record|grade{_S}report|mark{_S}sheet|course{_S}(list|history)|"
+                   rf"statement{_S}of{_S}(results|marks|grades)"),
+    ("certificate", rf"certificat|certification|credential|diploma|degree|licensure|{_W('licen[cs]e')}|"
+                    rf"score{_S}report|exam{_S}result|{_W('ielts|toefl|celpip|gmat')}|course{_S}completion|"
+                    rf"training{_S}record"),
+    ("review", rf"(performance|employee|staff|teaching|teacher|probation(ary)?){_S}"
+               rf"(review|appraisal|evaluation|assessment|feedback|plan|summary)|appraisal|"
+               rf"self{_S}(assessment|evaluation|review)|(year|mid){_S}(end|year){_S}review|annual{_S}review|"
+               rf"peer{_S}feedback"),
+    ("offer or contract", rf"offer{_S}(letter|of{_S}employment)|letter{_S}of{_S}(offer|employment)|"
+                          rf"employment{_S}(letter|agreement|contract|offer|verification|confirmation)|"
+                          rf"promotion{_S}letter|salary{_S}(increase|review|letter)|"
+                          rf"(job|position|role){_S}(description|profile)"),
+    ("reference", rf"reference{_S}letter|letter{_S}of{_S}(reference|recommendation|support)|"
+                  rf"lettre{_S}de{_S}recommandation|{_W('recommendations?|references')}"),
+    ("award", rf"{_W('awards?')}|recognition|employee{_S}of{_S}the|kudos|commendation|dean'?s{_S}list|"
+              rf"honou?r{_S}roll|scholarship"),
+    ("portfolio", rf"portfolio|case{_S}stud(y|ies)|(work|writing){_S}samples?"),
+    ("bio", rf"bio{_S}data|{_W('bio|biography')}"),
+]]
+# Names that match a word above but are something else: software licence files, product paperwork, money.
+EVIDENCE_NOT = re.compile(
+    rf"^(license|licence|copying|unlicense|notice)$|eula|end{_S}user|software{_S}licen|"
+    rf"licen[cs]e{_S}(key|agreement|terms)|driver'?s?{_S}licen|"
+    rf"certificate{_S}of{_S}(insurance|origin|analysis|authenticity|deposit|incorporation|title|occupancy)|"
+    rf"(gift|birth|marriage|death|ssl|tls|root){_S}certificate|"
+    rf"portfolio{_S}(statement|summary|holdings|valuation)|invest|brokerage", re.I)
+
+
+def evidence_kind(path):
+    """The kind of proof document a file name suggests, or None. Resumes and cover letters are left to the
+    default mode, so the two lists don't overlap."""
+    p = Path(path)
+    stem = p.stem
+    if NAME_HINT.search(stem) or EVIDENCE_NOT.search(stem):
+        return None
+    if stem.lower() == "profile" and p.suffix.lower() == ".pdf":  # LinkedIn's "Save to PDF" file name
+        return "linkedin"
+    if p.suffix.lower() == ".zip":  # of archives, only a LinkedIn data export
+        return "linkedin" if re.search(r"linkedin", stem, re.I) else None
+    for kind, rx in EVIDENCE_KINDS:
+        if rx.search(stem):
+            return kind
+    return None
 
 
 # ---------- roots ----------
@@ -235,7 +292,7 @@ class Progress:
                   file=self.stream, flush=True)
 
 
-def _walk(roots, visited, skipped, progress):
+def _walk(roots, visited, skipped, progress, exts=EXTS):
     """Yield (path, is_bundle). Each real folder is visited once, so loops and overlaps are harmless."""
     for root in roots:
         stack = [Path(root)]
@@ -269,18 +326,20 @@ def _walk(roots, visited, skipped, progress):
                                 stack.append(sub)
                     elif name not in SKIP_DIRS and not name.startswith("."):
                         stack.append(Path(e.path))
-                elif ext in EXTS:
+                elif ext in exts:
                     yield Path(e.path), False
 
 
-def scan(roots, progress_stream=None, quiet=False):
-    """Walk the roots and return a result dict. Ctrl+C stops cleanly and keeps what was found."""
+def scan(roots, progress_stream=None, quiet=False, evidence=False):
+    """Walk the roots and return a result dict. Ctrl+C stops cleanly and keeps what was found.
+    With evidence=True, list proof documents by file name only (see evidence_kind)."""
     progress = Progress(None if quiet else progress_stream)
     visited, skipped, found, hashes = set(), [], [], set()
     unreadable_pdfs = 0
     interrupted = False
     try:
-        for f, is_bundle in _walk([Path(r) for r in roots], visited, skipped, progress):
+        for f, is_bundle in _walk([Path(r) for r in roots], visited, skipped, progress,
+                                  EVIDENCE_EXTS if evidence else EXTS):
             try:
                 st = f.stat()
                 size = _bundle_size(f) if is_bundle else st.st_size
@@ -289,7 +348,9 @@ def scan(roots, progress_stream=None, quiet=False):
             if size > MAX_MB * 1024 * 1024 or size == 0:
                 continue
             reason = None
-            if NAME_HINT.search(f.stem):
+            if evidence:
+                reason = evidence_kind(f)
+            elif NAME_HINT.search(f.stem):
                 reason = "name"
             elif f.suffix.lower() in CONTENT_EXTS and not is_bundle:
                 text = read_content(f)
@@ -318,7 +379,7 @@ def scan(roots, progress_stream=None, quiet=False):
         c["n"] = i
     return {"candidates": found, "skipped": skipped, "unreadable_pdfs": unreadable_pdfs,
             "interrupted": interrupted, "folders": progress.folders, "roots": [str(r) for r in roots],
-            "pdftotext": bool(shutil.which("pdftotext"))}
+            "pdftotext": bool(shutil.which("pdftotext")), "evidence": evidence}
 
 
 def write_listing(result, dest):
@@ -330,11 +391,13 @@ def write_listing(result, dest):
                                for c in cands]}
     (dest / "manifest.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False), encoding="utf-8")
 
-    lines = ["# Harvest candidates", ""]
+    evidence = result.get("evidence", False)
+    lines = ["# Evidence candidates (matched by file name only)" if evidence else "# Harvest candidates", ""]
     if result["interrupted"]:
         lines += ["**Scan was stopped early (Ctrl+C). This list is partial.**", ""]
-    lines += ["Pick rows by number or by id: `--copy --pick 3,a1b2c3d4`, or `--copy --all`.", "",
-              "| # | id | Modified | Matched by | File |", "|---|---|---|---|---|"]
+    flag = "--evidence " if evidence else ""
+    lines += [f"Pick rows by number or by id: `{flag}--copy --pick 3,a1b2c3d4`, or `{flag}--copy --all`.", "",
+              f"| # | id | Modified | {'Kind' if evidence else 'Matched by'} | File |", "|---|---|---|---|---|"]
     lines += [f"| {c['n']} | {c['id']} | {datetime.fromtimestamp(c['mtime']):%Y-%m-%d} | {c['reason']} | "
               f"{c['path']} |" for c in cands]
     lines += ["", f"Scanned {result['folders']} folders in {len(result['roots'])} roots."]
@@ -452,7 +515,12 @@ def main(argv=None):
     ap.add_argument("--copy", action="store_true", help="copy files listed in manifest.json (no rescan)")
     ap.add_argument("--pick", default=None, help="comma-separated row numbers or ids from candidates.md")
     ap.add_argument("--all", action="store_true", help="with --copy: copy every candidate")
+    ap.add_argument("--evidence", action="store_true",
+                    help="proof documents (certificates, transcripts, reviews, offers, references, awards) "
+                         "by file name, listed and copied in source/evidence/")
     args = ap.parse_args(argv)
+    dest = EVIDENCE_DEST if args.evidence else DEST
+    flag = "--evidence " if args.evidence else ""
 
     if args.roots:
         found = discover_roots(args.root, args.only)
@@ -465,15 +533,15 @@ def main(argv=None):
 
     if args.copy:
         try:
-            copied, skipped = copy_from_manifest(DEST, args.pick, args.all)
+            copied, skipped = copy_from_manifest(dest, args.pick, args.all)
         except PickError as e:
             print(f"Error: {e}", file=sys.stderr)
             return 2
         for c, why in skipped:
             print(f"Skipped {c['path']}: {why}")
-        print(f"\nCopied {len(copied)} files, skipped {len(skipped)}. Folder: {DEST}")
+        print(f"\nCopied {len(copied)} files, skipped {len(skipped)}. Folder: {dest}")
         if copied:
-            print(f"Index: {DEST / 'INDEX.md'}")
+            print(f"Index: {dest / 'INDEX.md'}")
         return 0
 
     roots = [p for p, _ in discover_roots(args.root, args.only)]
@@ -483,10 +551,10 @@ def main(argv=None):
         return 2
     print(f"Searching {len(roots)} folders. This can take a few minutes; progress prints every 2 seconds.",
           file=sys.stderr)
-    result = scan(roots, progress_stream=sys.stderr)
-    print(write_listing(result, DEST))
+    result = scan(roots, progress_stream=sys.stderr, evidence=args.evidence)
+    print(write_listing(result, dest))
     print(f"\n{len(result['candidates'])} candidates. Nothing copied. Review the list with the user, then run "
-          "--copy --pick 1,2 (rows or ids) or --copy --all.")
+          f"{flag}--copy --pick 1,2 (rows or ids) or {flag}--copy --all.")
     return 0
 
 

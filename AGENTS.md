@@ -60,6 +60,17 @@ help with whatever the user asks. Stage 7 (browser setup) starts only when they 
 The one gate: before that first application, the resume must be `approved` (stage 5) or `existing, claims
 confirmed` (the claim check in `docs/03-resume-rules.md`, a few minutes).
 
+**Resume only.** If the user wants help with their resume, cover letters or profile and nothing else: do
+stages 0 and 1 (in stage 1 fix only what the resume tools need), intake phase 1, then the persona build in
+`docs/persona/README.md` from its step 1, without the offer. Record `scan: not wanted`, `email: not wanted`
+and `browser: not wanted`: they count as deferred. Never set up the daily scan, the email or applications
+unless the user asks later.
+
+**The persona build** (`docs/persona/README.md`) is the deep track for the resume, cover letters and the
+public profile: a sweep for every proof document the user will share, a job-by-job interview with a stop
+rule, then one positioning page that everything is written from. Offer it once before the first resume
+pass. It is optional, its `persona:` line in PROGRESS.md never blocks a stage, and a no is not raised again.
+
 **Finding a working Python.** Try `py -3 --version` (Windows), `python3 --version`, `python --version`. A
 command counts only if it prints version 3.9 or newer. On Windows, `python` can be a Microsoft Store
 placeholder that prints nothing or opens the Store: that doesn't count. A Python inside an app's own
@@ -70,7 +81,7 @@ works, or only a bundled one does, ask the user, then install: Windows `winget i
 command that worked for everything.
 
 **Any time.** A pasted posting gets the screen in `docs/05-jd-screen.md`. Recruiter and outreach questions:
-`docs/08-outreach.md`. A new win, cert or job change goes into `<data>/STORIES.md` and `<data>/PROFILE.md`,
+`docs/08-outreach.md`. Cover letter, LinkedIn or "how do I present myself" questions: `docs/persona/`. A new win, cert or job change goes into `<data>/STORIES.md` and `<data>/PROFILE.md`,
 then ask whether the resume needs a pass.
 
 ## Rules that hold for every user
@@ -121,6 +132,7 @@ then ask whether the resume needs a pass.
 
 ```
 docs/                    step guides
+docs/persona/            the deep track: evidence sweep, deep interview, positioning, resume, letters, profile
 scanner/                 the daily scan, the email sender, the scheduler installers
 templates/               files you copy into <data>/, and a plain resume layout
 examples/john-smith/  a complete fake profile (see its README.md). Never copy its facts.
@@ -129,7 +141,8 @@ examples/john-smith/  a complete fake profile (see its README.md). Never copy it
 Tools (`tools/`):
 
 - `setup_check.py`, `paths.py`: the data folder and the computer check.
-- `harvest.py`: finds and copies old resumes and cover letters.
+- `harvest.py`: finds and copies old resumes and cover letters. With `--evidence`: certificates,
+  transcripts, reviews, offer letters and other proof documents.
 - `build_resume.py`: builds the .docx and PDF, runs the quality gate, renders page images to look at.
 - `widths.py`, `check_render.ps1` / `check_render.sh`: bullet widths, page count, wrapped lines.
 - `email_setup.py`: SMTP email setup. `share_kit.py`: a clean zip of the kit to share.
