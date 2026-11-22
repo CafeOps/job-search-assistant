@@ -7,8 +7,9 @@ checks compare them.
 
 Read `../08-outreach.md`, "Quiet search while employed". Before any edit, have the user turn off the setting
 that tells their network about profile changes (search LinkedIn's settings for "profile updates"). No "Open
-to work" banner unless they choose it. A full rewrite in one evening gets noticed: offer to spread the edits
-over a week or two.
+to work" banner unless they choose it. The recruiters-only version is not a guarantee: recruiters at related
+companies, or at agencies the employer uses, may still see it. A full rewrite in one evening gets noticed:
+offer to spread the edits over a week or two.
 
 ## Who edits
 

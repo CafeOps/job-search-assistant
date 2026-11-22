@@ -64,29 +64,31 @@ PROGRESS_SECONDS = 2.0
 # ---------- evidence mode (docs/persona/1-evidence-sweep.md) ----------
 # Proof documents, matched by file NAME only: no file is opened, so cloud-only files stay in the cloud.
 EVIDENCE_DEST = paths.data_dir() / "source" / "evidence"
-EVIDENCE_EXTS = EXTS | {".png", ".jpg", ".jpeg", ".heic", ".tif", ".tiff", ".zip"}
+EVIDENCE_EXTS = EXTS | {".png", ".jpg", ".jpeg", ".heic", ".tif", ".tiff", ".zip", ".pptx"}
 _S = r"[ _.-]*"
 _W = lambda words: rf"(?<![a-z])(?:{words})(?![a-z])"  # whole word, where a prefix or suffix would mislead
 EVIDENCE_KINDS = [(kind, re.compile(rx, re.I)) for kind, rx in [
-    ("linkedin", r"linkedin"),
+    ("linkedin", rf"linked{_S}in"),
     ("transcript", rf"transcript|academic{_S}record|grade{_S}report|mark{_S}sheet|course{_S}(list|history)|"
-                   rf"statement{_S}of{_S}(results|marks|grades)"),
+                   rf"statement{_S}of{_S}(results|marks|grades)|degree{_S}audit|"
+                   rf"enrol+ment{_S}(verification|confirmation)"),
     ("certificate", rf"certificat|certification|credential|diploma|degree|licensure|{_W('licen[cs]e')}|"
-                    rf"score{_S}report|exam{_S}result|{_W('ielts|toefl|celpip|gmat')}|course{_S}completion|"
-                    rf"training{_S}record"),
-    ("review", rf"(performance|employee|staff|teaching|teacher|probation(ary)?){_S}"
-               rf"(review|appraisal|evaluation|assessment|feedback|plan|summary)|appraisal|"
+                    rf"score{_S}report|exam{_S}result|{_W('ielts|toefl|celpip|gmat|nclex|whmis|osha|cpr')}|"
+                    rf"{_W('certs?')}|course{_S}completion|training{_S}record"),
+    ("review", rf"(performance|perf|employee|staff|teaching|teacher|probation(ary)?){_S}"
+               rf"(review|appraisal|evaluation|eval|assessment|feedback|plan|summary)|appraisal|"
                rf"self{_S}(assessment|evaluation|review)|(year|mid){_S}(end|year){_S}review|annual{_S}review|"
-               rf"peer{_S}feedback"),
+               rf"end{_S}of{_S}year{_S}review|(peer|manager|360){_S}feedback"),
     ("offer or contract", rf"offer{_S}(letter|of{_S}employment)|letter{_S}of{_S}(offer|employment)|"
                           rf"employment{_S}(letter|agreement|contract|offer|verification|confirmation)|"
-                          rf"promotion{_S}letter|salary{_S}(increase|review|letter)|"
-                          rf"(job|position|role){_S}(description|profile)"),
-    ("reference", rf"reference{_S}letter|letter{_S}of{_S}(reference|recommendation|support)|"
-                  rf"lettre{_S}de{_S}recommandation|{_W('recommendations?|references')}"),
+                          rf"(promotion|compensation|comp|merit|bonus|appointment){_S}letter|merit{_S}increase|"
+                          rf"salary{_S}(increase|review|letter)|(job|position|role){_S}(description|profile)|"
+                          rf"{_W('jd|voe')}"),
+    ("reference", rf"(reference|recommendation|rec){_S}letter|letter{_S}of{_S}(reference|recommendation|support)|"
+                  rf"lettre{_S}de{_S}recommandation|{_W('recommendations?|references|lor')}"),
     ("award", rf"{_W('awards?')}|recognition|employee{_S}of{_S}the|kudos|commendation|dean'?s{_S}list|"
               rf"honou?r{_S}roll|scholarship"),
-    ("portfolio", rf"portfolio|case{_S}stud(y|ies)|(work|writing){_S}samples?"),
+    ("portfolio", rf"portfolio|case{_S}stud(y|ies)|(work|writing){_S}samples?|thesis|capstone|dissertation"),
     ("bio", rf"bio{_S}data|{_W('bio|biography')}"),
 ]]
 # Names that match a word above but are something else: software licence files, product paperwork, money.
@@ -95,20 +97,29 @@ EVIDENCE_NOT = re.compile(
     rf"licen[cs]e{_S}(key|agreement|terms)|driver'?s?{_S}licen|"
     rf"certificate{_S}of{_S}(insurance|origin|analysis|authenticity|deposit|incorporation|title|occupancy)|"
     rf"(gift|birth|marriage|death|ssl|tls|root){_S}certificate|"
-    rf"portfolio{_S}(statement|summary|holdings|valuation)|invest|brokerage", re.I)
+    rf"portfolio{_S}(statement|summary|holdings|valuation)|invest|brokerage|"
+    rf"(meeting|zoom|teams|call|podcast|video|audio|interview|court|tax|irs|cra|chat){_S}transcript|"
+    rf"certificate{_S}of{_S}(birth|death|marriage|divorce|citizenship|naturali[sz]ation|vaccination|"
+    rf"immuni[sz]ation|residency)|(medical|covid|vaccine|vaccination|immuni[sz]ation){_S}certificat|"
+    rf"(fishing|hunting|boating|pet|dog|marriage|gun|firearm|liquor|tv|business|radio){_S}licen[cs]e|"
+    rf"(home|house|property|real{_S}estate|car|auto|vehicle|jewel+e?ry|art){_S}appraisal|"
+    rf"(401k|ira|rrsp|tfsa|stock|crypto|retirement|pension){_S}portfolio|revenue{_S}recognition|"
+    rf"(facial|face|speech|voice|image|character|pattern){_S}recognition|\d{_S}degree|"
+    rf"bio{_S}(\d|lab|exam|notes|chapter|quiz)|"
+    rf"(movie|film|book|restaurant|hotel|travel|gift|music|product){_S}recommendations?", re.I)
 
 
 def evidence_kind(path):
     """The kind of proof document a file name suggests, or None. Resumes and cover letters are left to the
     default mode, so the two lists don't overlap."""
     p = Path(path)
-    stem = p.stem
+    stem = re.sub(r"([a-z0-9])([A-Z])", r"\1 \2", p.stem)  # NursingLicense -> Nursing License
     if NAME_HINT.search(stem) or EVIDENCE_NOT.search(stem):
         return None
-    if stem.lower() == "profile" and p.suffix.lower() == ".pdf":  # LinkedIn's "Save to PDF" file name
-        return "linkedin"
+    if re.fullmatch(r"profile(\s*\(\d+\))?", stem, re.I) and p.suffix.lower() == ".pdf":
+        return "linkedin"  # LinkedIn's "Save to PDF" file name, also "Profile (1).pdf"
     if p.suffix.lower() == ".zip":  # of archives, only a LinkedIn data export
-        return "linkedin" if re.search(r"linkedin", stem, re.I) else None
+        return "linkedin" if re.search(rf"linked{_S}in", stem, re.I) else None
     for kind, rx in EVIDENCE_KINDS:
         if rx.search(stem):
             return kind
@@ -396,7 +407,8 @@ def write_listing(result, dest):
     if result["interrupted"]:
         lines += ["**Scan was stopped early (Ctrl+C). This list is partial.**", ""]
     flag = "--evidence " if evidence else ""
-    lines += [f"Pick rows by number or by id: `{flag}--copy --pick 3,a1b2c3d4`, or `{flag}--copy --all`.", "",
+    lines += [f"Pick rows by number or by id: `{flag}--copy --pick 3,a1b2c3d4`" +
+              ("." if evidence else ", or `--copy --all`."), "",
               f"| # | id | Modified | {'Kind' if evidence else 'Matched by'} | File |", "|---|---|---|---|---|"]
     lines += [f"| {c['n']} | {c['id']} | {datetime.fromtimestamp(c['mtime']):%Y-%m-%d} | {c['reason']} | "
               f"{c['path']} |" for c in cands]
@@ -532,6 +544,11 @@ def main(argv=None):
         return 0
 
     if args.copy:
+        if args.evidence and args.all:
+            print("Error: --all is not available with --evidence. Name matching also catches private papers, "
+                  "so have the user pick each row: --evidence --copy --pick 1,3. Nothing was copied.",
+                  file=sys.stderr)
+            return 2
         try:
             copied, skipped = copy_from_manifest(dest, args.pick, args.all)
         except PickError as e:
@@ -554,7 +571,7 @@ def main(argv=None):
     result = scan(roots, progress_stream=sys.stderr, evidence=args.evidence)
     print(write_listing(result, dest))
     print(f"\n{len(result['candidates'])} candidates. Nothing copied. Review the list with the user, then run "
-          f"{flag}--copy --pick 1,2 (rows or ids) or {flag}--copy --all.")
+          f"{flag}--copy --pick 1,2 (rows or ids)" + ("." if args.evidence else " or --copy --all."))
     return 0
 
 

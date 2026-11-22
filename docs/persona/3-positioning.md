@@ -12,8 +12,10 @@ user picks them, or take them from the daily digest and PIPELINE.md).
 1. **Read the market.** From the postings, list the duties and skills that repeat, with how many postings
    ask for each. Mark each one: has it, with proof (name the story), has it but thin, or doesn't have it.
    Record this as the "Market map". The third group is never claimed. It goes to the gaps list.
-2. **Pick the lane.** The one kind of job where their proof is strongest and where they want to go. A second
-   lane only if the user needs it, and then it gets its own resume variant (`../03-resume-rules.md`).
+2. **Pick the lane.** Ask first: "Of the work you've proven you can do, what do you want more of, and what
+   do you never want to do again?" Then pick the one kind of job where their proof is strongest and where
+   they want to go. Never build a lane on work they hate. A second lane only if the user needs it, and
+   then it gets its own resume variant (`../03-resume-rules.md`).
 3. **Three themes.** What they are known for. Each theme is a capability, two stories that show it, and a
    number or a scope. Use the contrast question from the interview: what do they do that others with the
    title don't?
@@ -26,7 +28,8 @@ user picks them, or take them from the daily digest and PIPELINE.md).
    Nothing a reader can't check.
 8. **The spoken pitch.** 30 to 45 seconds, written for the ear: what I do now and at what scale, how I got
    here with one proof point, what I want next and why. The user says it aloud. Fix every place they stumble.
-9. **Bios.** One line (120 characters), short (50 words), long (120 words).
+9. **Bios**, only if they speak, publish or freelance: one line (120 characters), short (50 words), long
+   (120 words). Otherwise skip.
 10. **What they are not.** Titles, skills and claims to stay away from, so later drafts don't drift.
 11. **The proof map.** Each claim in the one-liner and themes, with the story and number behind it.
 12. **Confirm.** The user approves the page. Add a line to `<data>/DECISIONS.md`.

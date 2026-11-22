@@ -8,11 +8,12 @@ and the visual check. Run its resume pass when you finish here.
 1. **The frame.** Settle with the user: page count, sections and their order (experience first for most.
    Education first for a student or new graduate. Projects high for a career changer), bullets per job
    (Rule 2), which jobs get space (the last ten years. Older ones get a line each), and the title layers
-   (Rule 3).
+   (Rule 3). Promotions at one employer sit under one employer heading, each title with its own dates, so
+   the growth shows.
 2. **The slate.** For each job, list every usable story as a candidate bullet with its lane, how many target
-   postings ask for it (the market map in PERSONA.md), its strength (measured number, then estimated, then
-   scope) and how recent it is. Pick the top ones so that no two cover the same lane. The first bullet of
-   the current job is the strongest match to the lane. Show the user the picks and the bench in ONE message.
+   postings ask for it (the market map in PERSONA.md), its strength (a measured result or a passed
+   audit or inspection, then an estimate, then scope) and how recent it is. Pick the top ones so that no
+   two cover the same lane. The first bullet of the current job is the strongest match to the lane. Show the user the picks and the bench in ONE message.
    They swap what they like.
 3. **Write the bullets** from the story's own words. Shapes are in `../04-story-bank.md`. One proof point
    each. A number keeps its status word ("estimated"). Fit the width band. No internal names.

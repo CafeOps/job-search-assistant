@@ -162,9 +162,15 @@ class HarvestTests(unittest.TestCase):
         wanted = {"PL-300 Certificate.pdf": "certificate", "Offer Letter 2023.docx": "offer or contract",
                   "Year-End Review 2024.pdf": "review", "Profile.pdf": "linkedin",
                   "Basic_LinkedInDataExport_01-02-2027.zip": "linkedin", "Unofficial Transcript.pdf": "transcript",
-                  "Reference letter - manager.pdf": "reference", "award photo.jpg": "award"}
+                  "Reference letter - manager.pdf": "reference", "award photo.jpg": "award",
+                  "NursingLicense.pdf": "certificate", "Profile (1).pdf": "linkedin",
+                  "Perf_Review_2025.pdf": "review", "JD_Senior_Analyst.pdf": "offer or contract",
+                  "Capstone_Slides.pptx": "portfolio", "Degree_Audit.pdf": "transcript"}
         ignored = ["My Resume 2019.txt", "LICENSE.txt", "holiday.jpg", "Certificate of Insurance.pdf",
-                   "backup.zip", "Portfolio statement Q3.pdf", "notes.txt"]
+                   "backup.zip", "Portfolio statement Q3.pdf", "notes.txt", "IRS_tax_transcript_2025.pdf",
+                   "zoom_meeting_transcript.docx", "home_appraisal_2024.pdf", "certificate_of_birth.pdf",
+                   "fishing_license.pdf", "401k_portfolio.pdf", "revenue_recognition_policy.pdf",
+                   "360_degree_photo.jpg", "bio_101_notes.pdf", "movie_recommendations.txt"]
         for name in list(wanted) + ignored:
             (self.src / name).write_bytes(name.encode())
         res = harvest.scan([self.src], quiet=True, evidence=True)
@@ -172,7 +178,9 @@ class HarvestTests(unittest.TestCase):
         text = harvest.write_listing(res, self.dest)
         self.assertIn("# Evidence candidates", text)
         self.assertIn("--evidence --copy --pick", text)
-        copied, skipped = harvest.copy_from_manifest(self.dest, copy_all=True)
+        self.assertNotIn("--copy --all", text)
+        picks = ",".join(str(c["n"]) for c in res["candidates"])
+        copied, skipped = harvest.copy_from_manifest(self.dest, pick=picks)
         self.assertEqual((len(copied), len(skipped)), (len(wanted), 0))
 
     def test_default_scan_ignores_evidence_only_files(self):
@@ -191,7 +199,8 @@ class HarvestTests(unittest.TestCase):
         harvest.DEST, harvest.EVIDENCE_DEST = self.dest, ev
         try:
             self.assertEqual(harvest.main(["--only", str(self.src), "--evidence"]), 0)
-            self.assertEqual(harvest.main(["--evidence", "--copy", "--all"]), 0)
+            self.assertEqual(harvest.main(["--evidence", "--copy", "--all"]), 2)
+            self.assertEqual(harvest.main(["--evidence", "--copy", "--pick", "1"]), 0)
         finally:
             harvest.DEST, harvest.EVIDENCE_DEST = old
         self.assertFalse(self.dest.exists())

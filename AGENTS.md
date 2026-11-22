@@ -60,16 +60,24 @@ help with whatever the user asks. Stage 7 (browser setup) starts only when they 
 The one gate: before that first application, the resume must be `approved` (stage 5) or `existing, claims
 confirmed` (the claim check in `docs/03-resume-rules.md`, a few minutes).
 
-**Resume only.** If the user wants help with their resume, cover letters or profile and nothing else: do
-stages 0 and 1 (in stage 1 fix only what the resume tools need), intake phase 1, then the persona build in
-`docs/persona/README.md` from its step 1, without the offer. Record `scan: not wanted`, `email: not wanted`
-and `browser: not wanted`: they count as deferred. Never set up the daily scan, the email or applications
-unless the user asks later.
+**Resume only.** If the user wants help with their resume, cover letters or profile and nothing else:
+1. Stages 0 and 1. In stage 1 fix only what the resume tools need.
+2. Intake phase 1, phase 3 (direction, for TARGETS.md) and phase 4 items 5 and 6 only (form wording and
+   careful answers, for SCREEN.md. Pay floors only if they want them). Ask for 5 to 10 real postings for the
+   job they want, or find them together, and save the links in TARGETS.md. Skip the scanner config.
+3. The persona build (`docs/persona/README.md`) steps 1 to 3, without the offer.
+4. Stage 4 (the rules, `docs/03-resume-rules.md`), then persona step 4 and the stage 5 pass and gate.
+5. Record `intake: resume only (phases 1, 3, part of 4) YYYY-MM-DD`, `scan: not wanted`, `email: not wanted`
+   and `browser: not wanted`. All count as deferred. Never set up the daily scan, the email or applications
+   unless the user asks later.
 
 **The persona build** (`docs/persona/README.md`) is the deep track for the resume, cover letters and the
 public profile: a sweep for every proof document the user will share, a job-by-job interview with a stop
 rule, then one positioning page that everything is written from. Offer it once before the first resume
-pass. It is optional, its `persona:` line in PROGRESS.md never blocks a stage, and a no is not raised again.
+pass. A no is not raised again. `persona: not started` or `declined` never blocks a stage. Once it has
+started (`sweep done`, `interview: ...`, `coverage ...`), continue it before stage 5 and before intake
+phases 2, 5 and 6, until `positioning confirmed` leads into its step 4 or the user stops it
+(`persona: stopped YYYY-MM-DD`).
 
 **Finding a working Python.** Try `py -3 --version` (Windows), `python3 --version`, `python --version`. A
 command counts only if it prints version 3.9 or newer. On Windows, `python` can be a Microsoft Store

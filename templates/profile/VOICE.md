@@ -5,7 +5,7 @@ leveraged, spearheaded, streamlined, seamless, seamlessly, synergy, orchestrated
 results-driven, go-getter, "in order to", "it is worth noting", "responsible for", "helped to", utilized,
 cutting-edge, best-in-class, "proven track record"
 
-Punctuation: no em dashes. Avoid semicolons in bullets.
+Punctuation: no em or en dashes. No semicolons in bullets.
 
 ## Added by the user
 -

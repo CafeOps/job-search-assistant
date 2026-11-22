@@ -6,7 +6,8 @@ until the facts run out, and only then writes. One fact base then feeds the resu
 LinkedIn text and the interview answers, so they all say the same thing.
 
 Run it when the user asks for the best resume they can have, asks for cover letter, LinkedIn or "how do I
-present myself" help, or when a resume pass finds the facts thin. It is optional and never blocks a stage.
+present myself" help, or when a resume pass finds the facts thin. It is optional. Once it has started,
+finish it or stop it before the resume pass (AGENTS.md).
 
 ## Offer it once
 
@@ -35,8 +36,9 @@ Steps 1 to 4 run in order. Steps 5 and 6 can run any time after step 3. Keep one
 forward, so any tool can pick up from the file alone.
 
 How it fits the stages: the sweep completes stage 2 (record the `harvest:` line too). The deep interview
-completes intake phases 2, 5 and 6. Phases 1, 3 and 4 still come from `../01-intake-interview.md`, and the
-rules (stage 4) from `../03-resume-rules.md`. Never re-ask what `<data>/` already answers. Confirm it.
+completes intake phases 2 and 5 and the voice part of phase 6. Phases 1, 3 and 4 still come from
+`../01-intake-interview.md`, the tool setup in phase 6 still runs if the user wants the email or browser
+features, and the rules (stage 4) come from `../03-resume-rules.md`. Never re-ask what `<data>/` already answers. Confirm it.
 
 ## The sittings
 

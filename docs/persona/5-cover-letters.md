@@ -11,7 +11,10 @@ An outreach note usually does more (`../08-outreach.md`).
 - The posting, and a fit map: its top needs, each with the story that answers it.
 - PERSONA.md and VOICE.md.
 - One true reason for this employer. ASK: "Why this company, in your own words?" If the honest answer is
-  "the job fits and the pay is right", the letter says why the job fits and skips the praise.
+  "the job fits and the pay is right", the letter says why the job fits and skips the praise. If they draw
+  a blank, pick one concrete thing from the posting (the problem the team has, who it serves, a rule it must
+  meet) and ask whether that problem interests them. The best letters name the posting's problem and show
+  how the user has already solved one like it.
 
 ## The shape
 
@@ -46,9 +49,11 @@ whole letter against the posting each time anyway.
 - Text: `<data>/cover-letters/<company>-<req>.md`.
 - A form's text box: plain text, no formatting. Check the character limit, paste, then re-read the breaks.
 - An upload: the same font and contact line as the resume, one page, saved as
-  `First_Last_Cover_Letter_<Company>.pdf`. Build it with python-docx from a script kept in `<data>/`, or
-  give the user the text to paste into their word processor. Then look at the page image as you do for the
-  resume.
+  `First_Last_Cover_Letter_<Company>.pdf`. Use the font and size of the built resume (note them in
+  RESUME-RULES.md). The kit has no letter builder: write the .docx with python-docx from a short script kept
+  in `<data>/`, make the PDF and page check with `tools/check_render.ps1` or `tools/check_render.sh`, and
+  look at the page as you do for the resume. If that isn't possible on this computer, give the user the
+  text to paste into their word processor and check the PDF they export.
 - The user approves the exact text. Record the letter in the application's handoff and in PIPELINE.md.
 
 ## Short answers on forms

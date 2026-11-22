@@ -46,6 +46,8 @@ folder. Record the browser and upload folder in PROGRESS.md as `browser: ready`.
   the user. Never put the explanation in an unrelated field.
 - Suggested skills: remove any the user can't back.
 - Screening questions: truthful, from `SCREEN.md` and the handoff. Unsure means ask.
+- "How many years of X?": the "Form answer" in `<data>/SKILLS.md`, if that file exists. No row means ask.
+  Never raise or lower a figure the form prefilled or the user gave, on your own estimate.
 - Salary: "minimum" and "expected" are different questions. Use the recorded answer for each (`SCREEN.md`,
   "Form answers"). Missing means ask, never invent. When you help set them, suggest a minimum a little under
   the target, not the walk-away floor: a minimum at the floor can cap the offer there.

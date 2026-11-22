@@ -1,6 +1,7 @@
 # Profile
 
 Last updated: YYYY-MM-DD. Source for every line: a harvested file (name) or "user, YYYY-MM-DD".
+A fact taken from a file is marked [unconfirmed] until the user says yes to it.
 
 ## Identity
 - Legal name / goes by:

@@ -13,7 +13,8 @@ Flag a concern once. If the user keeps the thing, log it in `<data>/DECISIONS.md
 
 ## Rule 0. Source of truth
 
-Every claim maps to PROFILE, STORIES or NUMBERS, or a document the user gave you. No source, no claim. AI
+Every claim maps to an entry in PROFILE, STORIES, NUMBERS or SKILLS that the user has confirmed. An old
+document, or a note from another AI, is a lead and never a confirmation. No source, no claim. AI
 tools invent certifications, inflate numbers and push "Senior" titles the years don't back.
 The bar is "true and defensible in an interview", not an audit. The user is the final fact check.
 
@@ -47,7 +48,7 @@ Record which title goes where in RESUME-RULES.md.
 ## Rule 5. One banned list
 
 ONE list in `<data>/VOICE.md`, pasted into every drafting brief, including briefs to another model. Seed:
-leveraged, spearheaded, streamlined, seamless, synergy, orchestrated, passionate, dynamic, results-driven,
+leveraged, spearheaded, streamlined, seamless, seamlessly, synergy, orchestrated, passionate, dynamic, results-driven,
 go-getter, "in order to", "it is worth noting", "responsible for", "helped to", utilized, cutting-edge,
 best-in-class, "proven track record". No em or en dashes. No semicolons in bullets.
 Ask: "Any words that sound wrong where you live or in your industry?" A word the user really uses can be
@@ -149,8 +150,8 @@ rules and no quality gate. Rule 0 still holds: the file shows where a claim came
    a reference check would confirm?" Ask even when the resume's title looks official: the resume may show a
    functional title (Rule 3). Save that answer as the HR-record title. Forms use it.
 2. **Confirm** them in ONE numbered message. The user answers "right", "wrong" or "change to ...".
-3. **Save** each confirmed fact in PROFILE.md (history, education, certifications) or NUMBERS.md (status
-   "confirmed"). Forms are filled from these files, never from the resume's wording.
+3. **Save** each confirmed fact in PROFILE.md (history, education, certifications) or NUMBERS.md (the date
+   in "Confirmed by user"). Forms are filled from these files, never from the resume's wording.
 4. **Fix** anything wrong in a copy (the python-docx method in "Files and names"), keep the original in
    `<data>/source/`, and put the fixed copy in `<data>/resume/live/`. A version with a wrong or unconfirmed
    claim is never uploaded. If the user won't change it, offer the full resume pass instead.
